@@ -1,0 +1,46 @@
+{
+    "name": "@oat-sa-private/read-aloud-client",
+    "version": "0.1.0",
+    "displayName": "Read aloud client",
+    "description": "Vendor agnostic text to speech client",
+    "main": "index.js",
+    "scripts": {
+        "lint": "eslint -c .eslintrc.js --ext js .",
+        "lint:report": "eslint -c .eslintrc.js --output-file eslint_report.json --format json --ext js .",
+        "test": "jest",
+        "test:cov": "npm test -- --coverage"
+    },
+    "directories": {
+        "test": "test"
+    },
+    "publishConfig": {
+        "access": "restricted"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/oat-sa/read-aloud-client.git"
+    },
+    "author": "Open Assessment Technologies SA",
+    "license": "GPL-2.0",
+    "bugs": {
+        "url": "https://github.com/oat-sa/read-aloud-client/issues"
+    },
+    "homepage": "https://github.com/oat-sa/read-aloud-client#readme",
+    "engines": {
+        "node": ">=10.0.0"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.15.5",
+        "@babel/preset-env": "^7.15.4",
+        "@oat-sa/browserslist-config-tao": "^0.3.1",
+        "@oat-sa/eslint-config-tao": "^1.1.1",
+        "@oat-sa/prettier-config": "^0.1.1",
+        "eslint": "^7.32.0",
+        "jest": "^27.1.0",
+        "prettier": "^2.3.2"
+    },
+    "browserslist": [
+        "extends @oat-sa/browserslist-config-tao"
+    ],
+    "prettier": "@oat-sa/prettier-config"
+}
