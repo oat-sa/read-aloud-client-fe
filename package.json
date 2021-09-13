@@ -11,7 +11,7 @@
         "lint:report": "eslint -c .eslintrc.js --output-file eslint_report.json --format json --ext js .",
         "build": "rollup -c rollup.config.js",
         "build:dev": "rollup --watch -c sandbox/rollup.config.js",
-        "test": "jest",
+        "test": "jest --config=jest.config.js",
         "test:cov": "npm test -- --coverage",
         "serve:sandbox": "sirv sandbox --port 5400 --dev --http2 --key ./localhost-key.pem --cert ./localhost-cert.pem",
         "dev:sandbox": "run-p serve:sandbox build:dev"

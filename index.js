@@ -17,7 +17,7 @@
  */
 
 import * as providers from './lib/providers/index.js';
-import { volumes, speeds, pitches }  from './lib/preferences.js';
+import { volumes, speeds, pitches } from './lib/preferences.js';
 
 /**
  * Get a read aloud client for a given provider with a specific config
@@ -28,9 +28,12 @@ import { volumes, speeds, pitches }  from './lib/preferences.js';
 export default function getReadAloudClient(providerId, config = {}) {
     const providerFactory = providers[providerId];
 
-    return providerFactory(config).then(provider => {
+    if (typeof providerFactory !== 'function') {
+        return Promise.reject(new TypeError(`Provider ${providerId} not found.`));
+    }
 
-        if(['play', 'playSelection', 'stop'].some( method => typeof provider[method] !== 'function')){
+    return providerFactory(config).then(provider => {
+        if (['play', 'playSelection', 'stop'].some(method => typeof provider[method] !== 'function')) {
             return Promise.reject(new TypeError(`The provider ${providerId} does not comply with the API`));
         }
 
@@ -46,7 +49,6 @@ export default function getReadAloudClient(providerId, config = {}) {
          * @property {function} [setPreferences]
          */
         return {
-
             /**
              * Start playing from that element
              * @param {HTMLElement} element
@@ -68,8 +70,8 @@ export default function getReadAloudClient(providerId, config = {}) {
              * Is playing ongoing
              * @returns {boolean}
              */
-            isReading(){
-                if(typeof provider.isReading === 'function'){
+            isReading() {
+                if (typeof provider.isReading === 'function') {
                     return provider.isReading();
                 }
                 return false;
@@ -79,8 +81,8 @@ export default function getReadAloudClient(providerId, config = {}) {
              * Calls the handler when reading starts
              * @param {function} handler
              */
-            onReadStart(handler){
-                if(typeof provider.onReadStart === 'function' && typeof handler === 'function'){
+            onReadStart(handler) {
+                if (typeof provider.onReadStart === 'function' && typeof handler === 'function') {
                     provider.onReadStart(handler);
                 }
             },
@@ -89,8 +91,8 @@ export default function getReadAloudClient(providerId, config = {}) {
              * Calls the handler when reading ends
              * @param {function} handler
              */
-            onReadEnd(handler){
-                if(typeof provider.onReadEnd === 'function' && typeof handler === 'function'){
+            onReadEnd(handler) {
+                if (typeof provider.onReadEnd === 'function' && typeof handler === 'function') {
                     provider.onReadEnd(handler);
                 }
             },
@@ -111,8 +113,8 @@ export default function getReadAloudClient(providerId, config = {}) {
              * @param {string} voice - the voice identifier
              * @returns {*}
              */
-            setPreferences(speed, pitch, volume, voice){
-                if(typeof provider.setPreferences === 'function'){
+            setPreferences(speed, pitch, volume, voice) {
+                if (typeof provider.setPreferences === 'function') {
                     return provider.setPreferences(
                         Object.values(speeds).includes(speed) ? speed : speeds.normal,
                         Object.values(pitches).includes(pitch) ? pitch : pitches.medium,
@@ -127,8 +129,8 @@ export default function getReadAloudClient(providerId, config = {}) {
              * @param {string} selector - any dom selector
              * @returns {*}
              */
-            ignoreElements(selector){
-                if(typeof provider.ignoreElements === 'function'){
+            ignoreElements(selector) {
+                if (typeof provider.ignoreElements === 'function') {
                     return provider.ignoreElements(selector);
                 }
             }
@@ -140,6 +142,6 @@ export default function getReadAloudClient(providerId, config = {}) {
  * Expose the list of available providers
  * @returns {string[]} the list of provider ids
  */
-export function getAvailableProviders(){
+export function getAvailableProviders() {
     return Object.keys(providers);
 }
