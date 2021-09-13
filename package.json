@@ -3,12 +3,18 @@
     "version": "0.1.0",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
+    "module": "index.js",
     "main": "index.js",
+    "browser": "dist/index.js",
     "scripts": {
         "lint": "eslint -c .eslintrc.js --ext js .",
         "lint:report": "eslint -c .eslintrc.js --output-file eslint_report.json --format json --ext js .",
+        "build": "rollup -c rollup.config.js",
+        "build:dev": "rollup --watch -c sandbox/rollup.config.js",
         "test": "jest",
-        "test:cov": "npm test -- --coverage"
+        "test:cov": "npm test -- --coverage",
+        "serve:sandbox": "sirv sandbox --port 5400 --dev --http2 --key ./localhost-key.pem --cert ./localhost-cert.pem",
+        "dev:sandbox": "run-p serve:sandbox build:dev"
     },
     "directories": {
         "test": "test"
@@ -35,12 +41,23 @@
         "@oat-sa/browserslist-config-tao": "^0.3.1",
         "@oat-sa/eslint-config-tao": "^1.1.1",
         "@oat-sa/prettier-config": "^0.1.1",
+        "@rollup/plugin-babel": "^5.3.0",
+        "@rollup/plugin-commonjs": "^20.0.0",
+        "@rollup/plugin-node-resolve": "^13.0.4",
         "eslint": "^7.32.0",
         "jest": "^27.1.0",
-        "prettier": "^2.3.2"
+        "npm-run-all": "^4.1.5",
+        "prettier": "^2.3.2",
+        "rollup": "^2.56.3",
+        "rollup-plugin-terser": "^7.0.2",
+        "sirv": "^1.0.17",
+        "sirv-cli": "^1.0.14"
     },
     "browserslist": [
         "extends @oat-sa/browserslist-config-tao"
     ],
-    "prettier": "@oat-sa/prettier-config"
+    "prettier": "@oat-sa/prettier-config",
+    "dependencies": {
+        "@oat-sa-private/ui-core": "^0.20.0"
+    }
 }
