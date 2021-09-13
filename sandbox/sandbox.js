@@ -87,9 +87,6 @@ providerSelect.addEventListener('change', () => {
                 client.ignoreElements('.do-not-read');
                 selectedClient = client;
 
-                selectedClient.onReadStart(() => console.log('read start'));
-                selectedClient.onReadEnd(() => console.log('read end'));
-
                 for (let control of nav.querySelectorAll('button,select,input')) {
                     control.removeAttribute('disabled');
                 }
