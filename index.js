@@ -34,7 +34,7 @@ export default function getReadAloudClient(providerId, config = {}) {
 
     return providerFactory(config).then(provider => {
         if (['play', 'playSelection', 'stop'].some(method => typeof provider[method] !== 'function')) {
-            return Promise.reject(new TypeError(`The provider ${providerId} does not comply with the API`));
+            return Promise.reject(new TypeError(`The provider ${providerId} does not comply with the API.`));
         }
 
         /**

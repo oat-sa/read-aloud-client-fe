@@ -17,5 +17,6 @@
  */
 module.exports = {
     verbose: true,
-    transformIgnorePatterns: []
+    transformIgnorePatterns: [],
+    testEnvironment: 'jsdom'
 };
