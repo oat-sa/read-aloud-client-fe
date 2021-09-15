@@ -107,5 +107,6 @@ dist
 eslint_report.json
 
 sandbox/bundle.js
+sandbox/bundle.js.map
 
-*.pem
+keys/*.pem

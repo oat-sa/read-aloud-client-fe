@@ -9,7 +9,7 @@ Multi vendor Text-To-Speech client
 You need to have access to the OAT private npm organization.
 
 ```bash
-npm i  @oat-sa-private/read-alound-client
+npm i  @oat-sa-private/read-aloud-client
 ```
 
 ## Usage
@@ -28,13 +28,13 @@ getReadAloudClient('native', {})
 
 ### Client API
 
--   `play(HTMLElement: elment)` : Starts reading from the given element.
+-   `play(HTMLElement: element)` : Starts reading from the given element.
 -   `playSelection()` : Starts reading the selected text.
 -   `stop()` : Stop any ongoing plays.
 -   `boolean: isReading()` : Returns true if any reading is ongoing.
 -   `onReadStart(function: handler)` : calls back the handler when reading starts
 -   `onReadEnd(function: handler)` : calls back the handler when reading ends
--   `setPreferences(string: speed, string: picth, string: volume, string: voice)` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
+-   `setPreferences(string: speed, string: pitch, string: volume, string: voice)` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
 -   `ignoreElements(string: selector)` : do not read the elements matching the given DOM selector.
 
 ## Supported Providers
@@ -64,8 +64,8 @@ getReadAloudClient('native', {})
 Clone the repository and install it:
 
 ```bash
-git clone https://github.com/oat-sa/read-aloud-client
-cd read-aloud-client
+git clone https://github.com/oat-sa/read-aloud-client-fe
+cd read-aloud-client-fe
 npm ci
 ```
 
@@ -77,6 +77,7 @@ First generate some SSL certificates:
 
 ```bash
 mkcert -install
+cd keys
 mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem localhost 127.0.0.1 ::1
 ```
 
