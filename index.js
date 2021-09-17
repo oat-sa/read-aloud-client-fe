@@ -107,19 +107,26 @@ export default function getReadAloudClient(providerId, config = {}) {
 
             /**
              * Change the reading preferences
-             * @param {string} speed - from the available speeds values
-             * @param {string} pitch - from the available pitches values
-             * @param {string} volume - from the available volumes values
-             * @param {string} voice - the voice identifier
+             * @param {Object} preferences
+             * @param {string} preferences.speed - from the available speeds values
+             * @param {string} preferences.pitch - from the available pitches values
+             * @param {string} preferences.volume - from the available volumes values
              * @returns {*}
              */
-            setPreferences(speed, pitch, volume, voice) {
+            setPreferences(preferences = {}) {
                 if (typeof provider.setPreferences === 'function') {
                     return provider.setPreferences(
-                        Object.values(speeds).includes(speed) ? speed : speeds.normal,
-                        Object.values(pitches).includes(pitch) ? pitch : pitches.medium,
-                        Object.values(volumes).includes(volume) ? volume : volumes.medium,
-                        voice
+                        Object.assign({}, preferences, {
+                            speed: Object.values(speeds).includes(preferences.speed)
+                                ? preferences.speed
+                                : speeds.normal,
+                            pitch: Object.values(pitches).includes(preferences.pitch)
+                                ? preferences.pitch
+                                : pitches.medium,
+                            volume: Object.values(volumes).includes(preferences.volume)
+                                ? preferences.volume
+                                : volumes.medium
+                        })
                     );
                 }
             },

@@ -39,7 +39,7 @@ Optional methods that may not be implemented by every provider:
 -   `boolean: isReading()` : Returns true if any reading is ongoing.
 -   `onReadStart(function: handler)` : calls back the handler when reading starts
 -   `onReadEnd(function: handler)` : calls back the handler when reading ends
--   `setPreferences(string: speed, string: pitch, string: volume, string: voice)` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
+-   `setPreferences( { string: speed, string: pitch, string: volume, string: voice })` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
 -   `ignoreElements(string: selector)` : do not read the elements matching the given DOM selector.
 
 ## Supported Providers
