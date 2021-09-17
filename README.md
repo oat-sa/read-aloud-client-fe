@@ -28,9 +28,14 @@ getReadAloudClient('native', {})
 
 ### Client API
 
+Main methods, available in all providers:
+
 -   `play(HTMLElement: element)` : Starts reading from the given element.
 -   `playSelection()` : Starts reading the selected text.
 -   `stop()` : Stop any ongoing plays.
+
+Optional methods that may not be implemented by every provider:
+
 -   `boolean: isReading()` : Returns true if any reading is ongoing.
 -   `onReadStart(function: handler)` : calls back the handler when reading starts
 -   `onReadEnd(function: handler)` : calls back the handler when reading ends
@@ -87,7 +92,51 @@ Run the sandbox:
 npm run dev:sandbox
 ```
 
+### Add a new provider
+
+A provider is an async factory function that resolve with the implementation. A minimal provider looks like:
+
+```js
+export default function fancyProvider(config = {}) {
+    return Promise.resolve({
+        play(element) {},
+
+        playSelection() {},
+
+        stop() {}
+    });
+}
+```
+
+All optional methods can be added too.
+
+Then the provider must be exported in `lib/providers/index.js`:
+
+```js
+export { default as fancy } from './pathToFancy.js';
+```
+
+Please note the export named will be used as provider id (`fancy` in the example).
+
 ### Tests
+
+Run the test suite
+
+```bash
+npm run test
+```
+
+With coverage
+
+```bash
+npm run test:cov
+```
+
+During the development, `jest` can be called directly:
+
+```bash
+npx jest --watch
+```
 
 ## License
 
