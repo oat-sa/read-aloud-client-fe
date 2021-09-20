@@ -22,26 +22,29 @@ import { speeds, pitches, volumes } from '../lib/preferences.js';
 const nav = document.querySelector('nav');
 
 //provider selection
-const providerSelect = nav.querySelector('[name="provider"]');
-const providerConfigText = nav.querySelector('[name="provider-config"]');
+const providersGroup = nav.querySelector('[name="providers"]');
+const providerSelect = providersGroup.querySelector('[name="provider"]');
+const providerConfigText = providersGroup.querySelector('[name="provider-config"]');
 
 //controls
-const playButton = nav.querySelector('[name="play"]');
-const playSelectionButton = nav.querySelector('[name="play-selection"]');
-const stopButton = nav.querySelector('[name="stop"]');
-const articleSelect = nav.querySelector('[name="article-lang"]');
+const controlsGroup = nav.querySelector('[name="controls"]');
+const playButton = controlsGroup.querySelector('[name="play"]');
+const playSelectionButton = controlsGroup.querySelector('[name="play-selection"]');
+const stopButton = controlsGroup.querySelector('[name="stop"]');
+const articleSelect = controlsGroup.querySelector('[name="article-lang"]');
 
 //preferences
-const speedRange = nav.querySelector('[name="speed"]');
-const pitchRange = nav.querySelector('[name="pitch"]');
-const volumeRange = nav.querySelector('[name="volume"]');
+const preferencesGroup = nav.querySelector('[name="preferences"]');
+const speedRange = preferencesGroup.querySelector('[name="speed"]');
+const pitchRange = preferencesGroup.querySelector('[name="pitch"]');
+const volumeRange = preferencesGroup.querySelector('[name="volume"]');
 
 let selectedClient;
 
 playButton.addEventListener('click', () => {
     if (selectedClient) {
         const article = document.querySelector(`article[lang='${articleSelect.value}']`);
-        article.focus();
+
         article.scrollTo(0, 0);
         article.scrollIntoView();
 
@@ -87,8 +90,11 @@ providerSelect.addEventListener('change', () => {
                 client.ignoreElements('.do-not-read');
                 selectedClient = client;
 
-                for (let control of nav.querySelectorAll('button,select,input')) {
-                    control.removeAttribute('disabled');
+                for (let controlElt of controlsGroup.querySelectorAll('button,select,input')) {
+                    controlElt.removeAttribute('disabled');
+                }
+                for (let providerElt of providersGroup.querySelectorAll('select,textarea')) {
+                    providerElt.setAttribute('disabled', 'disabled');
                 }
             })
             .catch(err => window.console.error(err));

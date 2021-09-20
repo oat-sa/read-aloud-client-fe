@@ -34,7 +34,7 @@
     </head>
     <body lang="fr">
         <nav>
-            <fieldset>
+            <fieldset name="providers">
                 <legend>Read Aloud provider</legend>
                 <select name="provider">
                     <option value="">Select a provider</option>
@@ -44,7 +44,7 @@
                 <br /><br />
                 <textarea name="provider-config" placeholder="Provider config as JSON" rows="5" cols="20"></textarea>
             </fieldset>
-            <fieldset>
+            <fieldset name="controls">
                 <legend>Controls</legend>
                 <button name="play" disabled>play</button>
                 <select name="article-lang" disabled>
@@ -57,7 +57,7 @@
                 <button name="play-selection" disabled>play Selection</button>
                 <button name="stop" disabled>stop</button>
             </fieldset>
-            <fieldset>
+            <fieldset name="preferences">
                 <legend>Preferences</legend>
                 <label>
                     Speed:<br />
