@@ -67,11 +67,11 @@ volumeRange.addEventListener('change', () => setPreferences());
 
 function setPreferences(){
     if(selectedClient){
-        selectedClient.setPreferences(
-            Object.values(speeds)[speedRange.value],
-            Object.values(pitches)[pitchRange.value],
-            Object.values(volumes)[volumeRange.value]
-        );
+        selectedClient.setPreferences({
+            speed: Object.values(speeds)[speedRange.value],
+            pitch: Object.values(pitches)[pitchRange.value],
+            volume: Object.values(volumes)[volumeRange.value]
+        });
     }
 }
 
