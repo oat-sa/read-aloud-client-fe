@@ -68,13 +68,13 @@ export default function getReadAloudClient(providerId, config = {}) {
 
             /**
              * Is playing ongoing
-             * @returns {boolean}
+             * @returns {boolean?}
              */
             isReading() {
                 if (typeof provider.isReading === 'function') {
                     return provider.isReading();
                 }
-                return false;
+                return void 0;
             },
 
             /**
@@ -107,7 +107,7 @@ export default function getReadAloudClient(providerId, config = {}) {
 
             /**
              * Change the reading preferences
-             * @param {Object} preferences
+             * @param {Object} preferences - can be extended with vendor specific preferences
              * @param {string} preferences.speed - from the available speeds values
              * @param {string} preferences.pitch - from the available pitches values
              * @param {string} preferences.volume - from the available volumes values
