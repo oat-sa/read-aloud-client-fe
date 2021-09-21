@@ -2,7 +2,7 @@
 
 Multi vendor Text-To-Speech client
 
-[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - ![ci](https://github.com/oat-sa/read-alound-client-fe/actions/workflows/continous-integration.yml/badge.svg)
+[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml)
 
 ## Installation
 
