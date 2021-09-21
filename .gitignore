@@ -102,3 +102,11 @@ dist
 
 # TernJS port file
 .tern-port
+
+#eslint reports
+eslint_report.json
+
+sandbox/bundle.js
+sandbox/bundle.js.map
+
+keys/*.pem
