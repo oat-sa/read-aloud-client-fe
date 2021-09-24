@@ -90,7 +90,7 @@ providerSelect.addEventListener('change', () => {
                 client.ignoreElements('.do-not-read');
                 selectedClient = client;
 
-                for (let controlElt of controlsGroup.querySelectorAll('button,select,input')) {
+                for (let controlElt of document.querySelectorAll('button,select,input')) {
                     controlElt.removeAttribute('disabled');
                 }
                 for (let providerElt of providersGroup.querySelectorAll('select,textarea')) {
