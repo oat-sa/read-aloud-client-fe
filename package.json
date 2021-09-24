@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa-private/read-aloud-client",
-    "version": "0.1.0",
+    "version": "0.2.0",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
     "module": "index.js",
@@ -17,9 +17,9 @@
         "dev:sandbox": "run-p serve:sandbox build:dev"
     },
     "files": [
-       "lib",
-       "dist",
-       "!**/test"
+        "lib",
+        "dist",
+        "!**/test"
     ],
     "publishConfig": {
         "access": "restricted"
@@ -28,7 +28,9 @@
         "type": "git",
         "url": "git+https://github.com/oat-sa/read-aloud-client.git"
     },
-    "author": "Open Assessment Technologies SA",
+    "author": {
+        "name": "Open Assessment Technologies SA"
+    },
     "license": "GPL-2.0",
     "bugs": {
         "url": "https://github.com/oat-sa/read-aloud-client/issues"
