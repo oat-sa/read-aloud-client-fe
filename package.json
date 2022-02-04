@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa-private/read-aloud-client",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
     "module": "index.js",
