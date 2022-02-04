@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa-private/read-aloud-client",
-    "version": "0.2.1",
+    "version": "0.2.2",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
     "module": "index.js",
@@ -64,6 +64,6 @@
     ],
     "prettier": "@oat-sa/prettier-config",
     "dependencies": {
-        "@oat-sa-private/ui-core": "^0.20.0"
+        "@oat-sa-private/ui-core": "^0.21.0"
     }
 }
