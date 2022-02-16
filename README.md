@@ -33,6 +33,7 @@ Main methods, available in all providers:
 -   `play(HTMLElement: element)` : Starts reading from the given element.
 -   `playSelection()` : Starts reading the selected text.
 -   `stop()` : Stop any ongoing plays.
+-   `destroy()`: Destroy provider
 
 Optional methods that may not be implemented by every provider:
 
