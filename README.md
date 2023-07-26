@@ -78,6 +78,8 @@ Optional methods that may not be implemented by every provider:
 
 ## Development
 
+The project should be run with Node >= 18 and npm >= 9.
+
 Clone the repository and install it:
 
 ```bash
