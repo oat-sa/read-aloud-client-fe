@@ -64,7 +64,6 @@
     ],
     "prettier": "@oat-sa/prettier-config",
     "dependencies": {
-        "@oat-sa-private/ui-core": "^0.25.1",
         "scroll-into-view-if-needed": "^2.2.29"
     }
 }
