@@ -1,6 +1,6 @@
 # Read Aloud Client
 
-Multi vendor Text-To-Speech client
+Multi-vendor Text-To-Speech client
 
 [![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml)
 
@@ -9,7 +9,7 @@ Multi vendor Text-To-Speech client
 You need to have access to the OAT private npm organization.
 
 ```bash
-npm i  @oat-sa-private/read-aloud-client
+npm i @oat-sa-private/read-aloud-client
 ```
 
 ## Usage
@@ -65,6 +65,17 @@ Optional methods that may not be implemented by every provider:
 | configuration | - `url`: the service base url<br> - `license`: the license key |
 | prerequisite  | configure it through the ReadWeb Control Panel                 |
 
+### TextHelp
+
+|               |                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------- |
+| id            | `texthelp`                                                                          |
+| support level | testing                                                                             |
+| availability  | licensed per domain                                                                 |
+| browsers      | all                                                                                 |
+| configuration | - `url`: the service base url<br> - `speechStreamConfig`: name of the remote config |
+| prerequisite  | remote script & configuration file set up on TextHelp's servers                     |
+
 ## Development
 
 Clone the repository and install it:
@@ -89,13 +100,13 @@ mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem localhost 127.0
 
 Run the sandbox:
 
-```
+```bash
 npm run dev:sandbox
 ```
 
 ### Add a new provider
 
-A provider is an async factory function that resolve with the implementation. A minimal provider looks like:
+A provider is an async factory function that resolves with the implementation. A minimal provider looks like:
 
 ```js
 export default function fancyProvider(config = {}) {
@@ -141,6 +152,6 @@ npx jest --watch
 
 ## License
 
-Copyright (c) 2021 Open Assessment Technologies SA
+Copyright (c) 2021-2023 Open Assessment Technologies SA
 
 Licensed under the terms of the [GNU GPL v2](./LICENSE)
