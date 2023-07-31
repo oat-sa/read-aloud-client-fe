@@ -13,10 +13,11 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2021 (original work) Open Assessment Technologies SA ;
+ * Copyright (c) 2021-2023 (original work) Open Assessment Technologies SA ;
  */
 
 import getReadAloudClient from '../index.js';
+import { installCSP } from '../lib/providers/texthelp.js';
 import { speeds, pitches, volumes } from '../lib/preferences.js';
 
 const nav = document.querySelector('nav');
@@ -101,6 +102,10 @@ providerSelect.addEventListener('change', () => {
             .then(client => {
                 client.ignoreElements('.do-not-read');
                 selectedClient = client;
+
+                if (selectedClient.id === 'texthelp') {
+                    installCSP(); // not necessary, just a demo
+                }
 
                 for (let controlElt of document.querySelectorAll('button,select,input')) {
                     controlElt.removeAttribute('disabled');
