@@ -49,6 +49,9 @@ export default function getReadAloudClient(providerId, config = {}) {
          * @property {function} [setPreferences]
          */
         return {
+            /** Identifier */
+            id: provider.id,
+
             /**
              * Start playing from that element
              * @param {HTMLElement} element
