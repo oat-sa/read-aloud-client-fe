@@ -30,6 +30,8 @@ const providerConfigText = providersGroup.querySelector('[name="provider-config"
 const controlsGroup = nav.querySelector('[name="controls"]');
 const playButton = controlsGroup.querySelector('[name="play"]');
 const playSelectionButton = controlsGroup.querySelector('[name="play-selection"]');
+const pauseButton = controlsGroup.querySelector('[name="pause"]');
+const resumeButton = controlsGroup.querySelector('[name="resume"]');
 const stopButton = controlsGroup.querySelector('[name="stop"]');
 const articleSelect = controlsGroup.querySelector('[name="article-lang"]');
 
@@ -54,6 +56,16 @@ playButton.addEventListener('click', () => {
 playSelectionButton.addEventListener('click', () => {
     if (selectedClient) {
         selectedClient.playSelection();
+    }
+});
+pauseButton.addEventListener('click', () => {
+    if (selectedClient) {
+        selectedClient.pause();
+    }
+});
+resumeButton.addEventListener('click', () => {
+    if (selectedClient) {
+        selectedClient.resume();
     }
 });
 stopButton.addEventListener('click', () => {

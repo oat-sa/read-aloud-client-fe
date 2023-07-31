@@ -70,6 +70,22 @@ export default function getReadAloudClient(providerId, config = {}) {
             },
 
             /**
+             * Pause the current playing (with the ability to resume)
+             * @returns {*}
+             */
+            pause() {
+                return provider.pause();
+            },
+
+            /**
+             * Resume the current paused playing
+             * @returns {*}
+             */
+            resume() {
+                return provider.resume();
+            },
+
+            /**
              * Is playing ongoing
              * @returns {boolean?}
              */
@@ -77,7 +93,6 @@ export default function getReadAloudClient(providerId, config = {}) {
                 if (typeof provider.isReading === 'function') {
                     return provider.isReading();
                 }
-                return void 0;
             },
 
             /**
