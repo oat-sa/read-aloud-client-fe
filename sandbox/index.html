@@ -29,6 +29,14 @@
                 margin: 0 5px 5px 0;
                 max-width: 150px;
             }
+            [name="preferences"] {
+                & label {
+                    font-weight: bold;
+                }
+                & label + div {
+                    padding: 0 0 5px 10px;
+                }
+            }
         </style>
     </head>
     <body lang="fr">
@@ -55,26 +63,28 @@
                     <option value="nb">Article in Bokmål</option>
                     <option value="nn_NO">Article in Nynorsk</option>
                 </select>
+                <br>
                 <button name="play-selection" disabled>play Selection</button>
+                <br>
                 <button name="pause" disabled>pause</button>
                 <button name="resume" disabled>resume</button>
+                <br>
                 <button name="stop" disabled>stop</button>
             </fieldset>
             <fieldset name="preferences">
                 <legend>Preferences</legend>
-                <label>
-                    Speed:<br />
-                    slow <input type="range" value="2" min="0" max="5" step="1" name="speed" disabled /> fast
-                </label>
-                <br />
-                <label>
-                    Pitch:<br />
-                    low <input type="range" value="2" min="0" max="5" step="1" name="pitch" disabled /> high </label
-                ><br />
-                <label>
-                    volume:<br />
-                    low <input type="range" value="2" min="0" max="5" step="1" name="volume" disabled /> high
-                </label>
+                <label for="speed">Speed:</label>
+                <div>
+                    slow <input type="range" value="2" min="0" max="4" step="1" name="speed" id="speed" disabled /> fast
+                </div>
+                <label for="pitch">Pitch:</label>
+                <div>
+                    low <input type="range" value="2" min="0" max="4" step="1" name="pitch" id="pitch" disabled /> high
+                </div>
+                <label for="volume">Volume:</label>
+                <div>
+                    low <input type="range" value="2" min="0" max="4" step="1" name="volume" id="volume" disabled /> high
+                </div>
             </fieldset>
         </nav>
         <main>
