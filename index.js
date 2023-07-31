@@ -87,7 +87,7 @@ export default function getReadAloudClient(providerId, config = {}) {
 
             /**
              * Is playing ongoing
-             * @returns {boolean?}
+             * @returns {boolean|undefined}
              */
             isReading() {
                 if (typeof provider.isReading === 'function') {
