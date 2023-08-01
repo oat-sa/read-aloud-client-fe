@@ -74,7 +74,9 @@ export default function getReadAloudClient(providerId, config = {}) {
              * @returns {*}
              */
             pause() {
-                return provider.pause();
+                if (typeof provider.pause === 'function') {
+                    return provider.pause();
+                }
             },
 
             /**
@@ -82,7 +84,9 @@ export default function getReadAloudClient(providerId, config = {}) {
              * @returns {*}
              */
             resume() {
-                return provider.resume();
+                if (typeof provider.resume === 'function') {
+                    return provider.resume();
+                }
             },
 
             /**
