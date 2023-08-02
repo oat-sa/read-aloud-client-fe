@@ -39,14 +39,19 @@ export default function getReadAloudClient(providerId, config = {}) {
 
         /**
          * @typedef {Object} ReadAloudClient
+         * @property {string} id
          * @property {function} play
          * @property {function} playSelection
+         * @property {function} [pause]
+         * @property {function} [resume]
          * @property {function} [isReading]
          * @property {function} [onReadStart]
          * @property {function} [onReadStop]
          * @property {function} stop
+         * @property {function} [toggleClickToSpeak]
          * @property {function} [ignoreElements]
          * @property {function} [setPreferences]
+         * @property {function} destroy
          */
         return {
             /** Identifier */
@@ -125,6 +130,16 @@ export default function getReadAloudClient(providerId, config = {}) {
              */
             stop() {
                 return provider.stop();
+            },
+
+            /**
+             * Enables or disables the "Click To Speak" mode
+             * @returns {boolean|undefined} true if enabled
+             */
+            toggleClickToSpeak() {
+                if (typeof provider.toggleClickToSpeak === 'function') {
+                    return provider.toggleClickToSpeak();
+                }
             },
 
             /**

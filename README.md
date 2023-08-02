@@ -32,14 +32,17 @@ Main methods, available in all providers:
 
 -   `play(HTMLElement: element)` : Starts reading from the given element.
 -   `playSelection()` : Starts reading the selected text.
--   `stop()` : Stop any ongoing plays.
+-   `stop()` : Stops any ongoing plays.
 -   `destroy()`: Destroy provider
 
 Optional methods that may not be implemented by every provider:
 
+-   `pause()` : Pauses ongoing playing (resumable).
+-   `resume()` : Resumes current paused playing.
 -   `boolean: isReading()` : Returns true if any reading is ongoing.
 -   `onReadStart(function: handler)` : calls back the handler when reading starts
 -   `onReadEnd(function: handler)` : calls back the handler when reading ends
+-   `boolean: toggleClickToSpeak()` : Toggles the state of a "click-to-speak" mode, if supported.
 -   `setPreferences( { string: speed, string: pitch, string: volume, string: voice })` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
 -   `ignoreElements(string: selector)` : do not read the elements matching the given DOM selector.
 

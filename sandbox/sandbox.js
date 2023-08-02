@@ -35,6 +35,7 @@ const pauseButton = controlsGroup.querySelector('[name="pause"]');
 const resumeButton = controlsGroup.querySelector('[name="resume"]');
 const stopButton = controlsGroup.querySelector('[name="stop"]');
 const articleSelect = controlsGroup.querySelector('[name="article-lang"]');
+const ctsCheckbox = controlsGroup.querySelector('[name="click-to-speak"]');
 
 //preferences
 const preferencesGroup = nav.querySelector('[name="preferences"]');
@@ -74,6 +75,12 @@ stopButton.addEventListener('click', () => {
         selectedClient.stop();
     }
 });
+ctsCheckbox.addEventListener('change', () => {
+    if (selectedClient) {
+        const result = selectedClient.toggleClickToSpeak();
+        ctsCheckbox.checked = !!result;
+    }
+});
 speedRange.addEventListener('change', () => setPreferences());
 pitchRange.addEventListener('change', () => setPreferences());
 volumeRange.addEventListener('change', () => setPreferences());
@@ -105,6 +112,10 @@ providerSelect.addEventListener('change', () => {
 
                 if (selectedClient.id === 'texthelp') {
                     installCSP(); // not necessary, just a demo
+
+                    selectedClient.setPreferences({
+                        autoscroll: false
+                    });
                 }
 
                 for (let controlElt of document.querySelectorAll('button,select,input')) {
