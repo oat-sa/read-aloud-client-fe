@@ -103,6 +103,7 @@ providerSelect.addEventListener('change', () => {
             config = JSON.parse(providerConfigText.value);
         } catch (err) {
             window.console.error(err);
+            return;
         }
 
         getReadAloudClient(providerId, config)
