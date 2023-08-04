@@ -115,7 +115,8 @@ providerSelect.addEventListener('change', () => {
                     installCSP(); // not necessary, just a demo
 
                     selectedClient.setPreferences({
-                        autoscroll: false
+                        autoscroll: false,
+                        voice: 'female'
                     });
                 }
 
