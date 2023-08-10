@@ -112,8 +112,6 @@ providerSelect.addEventListener('change', () => {
                 selectedClient = client;
 
                 if (selectedClient.id === 'texthelp') {
-                    installCSP(); // not necessary, just a demo
-
                     selectedClient.setPreferences({
                         autoscroll: false,
                         voice: 'female'
