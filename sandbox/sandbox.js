@@ -98,9 +98,9 @@ function setPreferences() {
 providerSelect.addEventListener('change', () => {
     const providerId = providerSelect.value;
     if (providerId) {
-        let config = {};
+        let config;
         try {
-            config = JSON.parse(providerConfigText.value);
+            config = JSON.parse(providerConfigText.value || '{}');
         } catch (err) {
             window.console.error(err);
             return;

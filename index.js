@@ -54,8 +54,12 @@ export default function getReadAloudClient(providerId, config = {}) {
          * @property {function} destroy
          */
         return {
-            /** Identifier */
-            id: provider.id,
+            /** Identifier
+             * @returns {string}
+             */
+            get id() {
+                return provider.id;
+            },
 
             /**
              * Start playing from that element
