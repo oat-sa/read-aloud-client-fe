@@ -33,7 +33,7 @@ export default function getReadAloudClient(providerId, config = {}) {
     }
 
     return providerFactory(config).then(provider => {
-        if (['play', 'playSelection', 'stop'].some(method => typeof provider[method] !== 'function')) {
+        if (['play', 'playSelection', 'stop', 'destroy'].some(method => typeof provider[method] !== 'function')) {
             return Promise.reject(new TypeError(`The provider ${providerId} does not comply with the API.`));
         }
 
@@ -181,6 +181,14 @@ export default function getReadAloudClient(providerId, config = {}) {
                 if (typeof provider.ignoreElements === 'function') {
                     return provider.ignoreElements(selector);
                 }
+            },
+
+            /**
+             * Destroy the provider
+             * @returns {*}
+             */
+            destroy() {
+                return provider.destroy();
             }
         };
     });
