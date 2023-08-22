@@ -54,7 +54,8 @@ export default function getReadAloudClient(providerId, config = {}) {
          * @property {function} destroy
          */
         return {
-            /** Identifier
+            /**
+             * Identifier
              * @returns {string}
              */
             get id() {

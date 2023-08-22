@@ -17,7 +17,6 @@
  */
 
 import getReadAloudClient from '../index.js';
-import { installCSP } from '../lib/providers/texthelp.js';
 import { speeds, pitches, volumes } from '../lib/preferences.js';
 
 const nav = document.querySelector('nav');
