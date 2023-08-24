@@ -36,6 +36,14 @@
             [name='preferences'] label + div {
                 padding: 0 0 5px 10px;
             }
+            article[lang]::before {
+                content: 'lang: ' attr(lang);
+                display: inline-block;
+                padding: 2px 4px;
+                background: lightgrey;
+                color: #222;
+                pointer-events: none;
+            }
         </style>
     </head>
     <body lang="fr">
