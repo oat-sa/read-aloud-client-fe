@@ -14,7 +14,8 @@
         "test": "jest --config=jest.config.js",
         "test:cov": "npm test -- --coverage",
         "serve:sandbox": "sirv sandbox --port 5400 --dev --http2 --key keys/localhost-key.pem --cert keys/localhost-cert.pem",
-        "dev:sandbox": "run-p serve:sandbox build:dev"
+        "dev:sandbox": "run-p serve:sandbox build:dev",
+        "prepare": "npm run build"
     },
     "files": [
         "lib",
