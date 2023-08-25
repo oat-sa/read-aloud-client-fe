@@ -16,9 +16,4 @@
  * Copyright (c) 2021-2023 (original work) Open Assessment Technologies SA ;
  */
 
-import { getAvailableProviders, default as getReadAloudClient } from './index.js';
-
-export default {
-    getAvailableProviders,
-    getReadAloudClient,
-};
+export { getAvailableProviders, default as getReadAloudClient } from './index.js';
