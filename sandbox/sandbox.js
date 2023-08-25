@@ -13,7 +13,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2021 (original work) Open Assessment Technologies SA ;
+ * Copyright (c) 2021-2023 (original work) Open Assessment Technologies SA ;
  */
 
 import getReadAloudClient from '../index.js';
@@ -30,8 +30,11 @@ const providerConfigText = providersGroup.querySelector('[name="provider-config"
 const controlsGroup = nav.querySelector('[name="controls"]');
 const playButton = controlsGroup.querySelector('[name="play"]');
 const playSelectionButton = controlsGroup.querySelector('[name="play-selection"]');
+const pauseButton = controlsGroup.querySelector('[name="pause"]');
+const resumeButton = controlsGroup.querySelector('[name="resume"]');
 const stopButton = controlsGroup.querySelector('[name="stop"]');
 const articleSelect = controlsGroup.querySelector('[name="article-lang"]');
+const ctsCheckbox = controlsGroup.querySelector('[name="click-to-speak"]');
 
 //preferences
 const preferencesGroup = nav.querySelector('[name="preferences"]');
@@ -56,17 +59,33 @@ playSelectionButton.addEventListener('click', () => {
         selectedClient.playSelection();
     }
 });
+pauseButton.addEventListener('click', () => {
+    if (selectedClient) {
+        selectedClient.pause();
+    }
+});
+resumeButton.addEventListener('click', () => {
+    if (selectedClient) {
+        selectedClient.resume();
+    }
+});
 stopButton.addEventListener('click', () => {
     if (selectedClient) {
         selectedClient.stop();
+    }
+});
+ctsCheckbox.addEventListener('change', () => {
+    if (selectedClient) {
+        const result = selectedClient.toggleClickToSpeak();
+        ctsCheckbox.checked = !!result;
     }
 });
 speedRange.addEventListener('change', () => setPreferences());
 pitchRange.addEventListener('change', () => setPreferences());
 volumeRange.addEventListener('change', () => setPreferences());
 
-function setPreferences(){
-    if(selectedClient){
+function setPreferences() {
+    if (selectedClient) {
         selectedClient.setPreferences({
             speed: Object.values(speeds)[speedRange.value],
             pitch: Object.values(pitches)[pitchRange.value],
@@ -78,17 +97,25 @@ function setPreferences(){
 providerSelect.addEventListener('change', () => {
     const providerId = providerSelect.value;
     if (providerId) {
-        let config = {};
+        let config;
         try {
-            config = JSON.parse(providerConfigText.value);
+            config = JSON.parse(providerConfigText.value || '{}');
         } catch (err) {
             window.console.error(err);
+            return;
         }
 
         getReadAloudClient(providerId, config)
             .then(client => {
                 client.ignoreElements('.do-not-read');
                 selectedClient = client;
+
+                if (selectedClient.id === 'texthelp') {
+                    selectedClient.setPreferences({
+                        autoscroll: false,
+                        voice: 'female'
+                    });
+                }
 
                 for (let controlElt of document.querySelectorAll('button,select,input')) {
                     controlElt.removeAttribute('disabled');

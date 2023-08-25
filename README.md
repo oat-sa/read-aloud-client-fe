@@ -1,6 +1,6 @@
 # Read Aloud Client
 
-Multi vendor Text-To-Speech client
+Multi-vendor Text-To-Speech client
 
 [![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml)
 
@@ -9,7 +9,7 @@ Multi vendor Text-To-Speech client
 You need to have access to the OAT private npm organization.
 
 ```bash
-npm i  @oat-sa-private/read-aloud-client
+npm i @oat-sa-private/read-aloud-client
 ```
 
 ## Usage
@@ -32,14 +32,17 @@ Main methods, available in all providers:
 
 -   `play(HTMLElement: element)` : Starts reading from the given element.
 -   `playSelection()` : Starts reading the selected text.
--   `stop()` : Stop any ongoing plays.
+-   `stop()` : Stops any ongoing plays.
 -   `destroy()`: Destroy provider
 
 Optional methods that may not be implemented by every provider:
 
+-   `pause()` : Pauses ongoing playing (resumable).
+-   `resume()` : Resumes current paused playing.
 -   `boolean: isReading()` : Returns true if any reading is ongoing.
 -   `onReadStart(function: handler)` : calls back the handler when reading starts
 -   `onReadEnd(function: handler)` : calls back the handler when reading ends
+-   `boolean: toggleClickToSpeak()` : Toggles the state of a "click-to-speak" mode, if supported.
 -   `setPreferences( { string: speed, string: pitch, string: volume, string: voice })` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
 -   `ignoreElements(string: selector)` : do not read the elements matching the given DOM selector.
 
@@ -65,7 +68,20 @@ Optional methods that may not be implemented by every provider:
 | configuration | - `url`: the service base url<br> - `license`: the license key |
 | prerequisite  | configure it through the ReadWeb Control Panel                 |
 
+### TextHelp
+
+|               |                                                                                     |
+| ------------- | ----------------------------------------------------------------------------------- |
+| id            | `texthelp`                                                                          |
+| support level | testing                                                                             |
+| availability  | licensed per domain                                                                 |
+| browsers      | all                                                                                 |
+| configuration | - `url`: the service base url<br> - `speechStreamConfig`: name of the remote config |
+| prerequisite  | remote script & configuration file set up on TextHelp's servers                     |
+
 ## Development
+
+The project should be run with Node >= 18 and npm >= 9.
 
 Clone the repository and install it:
 
@@ -89,13 +105,13 @@ mkcert -cert-file localhost-cert.pem -key-file localhost-key.pem localhost 127.0
 
 Run the sandbox:
 
-```
+```bash
 npm run dev:sandbox
 ```
 
 ### Add a new provider
 
-A provider is an async factory function that resolve with the implementation. A minimal provider looks like:
+A provider is an async factory function that resolves with the implementation. A minimal provider looks like:
 
 ```js
 export default function fancyProvider(config = {}) {
@@ -141,6 +157,6 @@ npx jest --watch
 
 ## License
 
-Copyright (c) 2021 Open Assessment Technologies SA
+Copyright (c) 2021-2023 Open Assessment Technologies SA
 
 Licensed under the terms of the [GNU GPL v2](./LICENSE)
