@@ -117,8 +117,7 @@ providerSelect.addEventListener('change', () => {
 
                 if (selectedClient.id === 'texthelp') {
                     selectedClient.setPreferences({
-                        autoscroll: false,
-                        voice: 'female'
+                        autoscroll: false
                     });
                 }
 
