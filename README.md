@@ -56,6 +56,7 @@ Optional methods that may not be implemented by every provider:
 | support level | experimental                                                |
 | availability  | native, browser/OS based                                    |
 | browsers      | Firefox Desktop and Chrome Desktop & Android (not Chromium) |
+| i18n modes    | detect from DOM                                             |
 
 ### Readweb
 
@@ -65,6 +66,7 @@ Optional methods that may not be implemented by every provider:
 | support level | testing                                                        |
 | availability  | licensed per domain                                            |
 | browsers      | all                                                            |
+| i18n modes    | detect from DOM                                                |
 | configuration | - `url`: the service base url<br> - `license`: the license key |
 | prerequisite  | configure it through the ReadWeb Control Panel                 |
 
@@ -76,6 +78,7 @@ Optional methods that may not be implemented by every provider:
 | support level | testing                                                                             |
 | availability  | licensed per domain                                                                 |
 | browsers      | all                                                                                 |
+| i18n modes    | detect from DOM, configuration override                                             |
 | configuration | - `url`: the service base url<br> - `speechStreamConfig`: name of the remote config |
 | prerequisite  | remote script & configuration file set up on TextHelp's servers                     |
 
@@ -120,7 +123,9 @@ export default function fancyProvider(config = {}) {
 
         playSelection() {},
 
-        stop() {}
+        stop() {},
+
+        destroy() {}
     });
 }
 ```

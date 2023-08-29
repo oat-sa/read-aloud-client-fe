@@ -41,6 +41,8 @@ const preferencesGroup = nav.querySelector('[name="preferences"]');
 const speedRange = preferencesGroup.querySelector('[name="speed"]');
 const pitchRange = preferencesGroup.querySelector('[name="pitch"]');
 const volumeRange = preferencesGroup.querySelector('[name="volume"]');
+const genderRadioF = preferencesGroup.querySelector('#gender_f');
+const genderRadioM = preferencesGroup.querySelector('#gender_m');
 
 let selectedClient;
 
@@ -83,13 +85,16 @@ ctsCheckbox.addEventListener('change', () => {
 speedRange.addEventListener('change', () => setPreferences());
 pitchRange.addEventListener('change', () => setPreferences());
 volumeRange.addEventListener('change', () => setPreferences());
+genderRadioF.addEventListener('change', () => setPreferences());
+genderRadioM.addEventListener('change', () => setPreferences());
 
 function setPreferences() {
     if (selectedClient) {
         selectedClient.setPreferences({
             speed: Object.values(speeds)[speedRange.value],
             pitch: Object.values(pitches)[pitchRange.value],
-            volume: Object.values(volumes)[volumeRange.value]
+            volume: Object.values(volumes)[volumeRange.value],
+            voice: genderRadioF.checked ? genderRadioF.value : genderRadioM.value
         });
     }
 }
@@ -112,8 +117,7 @@ providerSelect.addEventListener('change', () => {
 
                 if (selectedClient.id === 'texthelp') {
                     selectedClient.setPreferences({
-                        autoscroll: false,
-                        voice: 'female'
+                        autoscroll: false
                     });
                 }
 

@@ -6,6 +6,22 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <title>Read aloud client</title>
+        <script>
+            MathJax = {
+                loader: { load: ['a11y/sre'] },
+                options: {
+                    menuOptions: {
+                        settings: {
+                            assistiveMml: false,
+                            explorer: true
+                        }
+                    }
+                },
+                tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+        <script type="module" src="bundle.js"></script>
         <style>
             main {
                 display: grid;
@@ -19,7 +35,7 @@
                 margin: 15px;
             }
             article {
-                max-height: 300px;
+                max-height: 220px;
                 overflow: hidden;
                 overflow-y: auto;
                 border: solid 1px grey;
@@ -35,6 +51,14 @@
             }
             [name='preferences'] label + div {
                 padding: 0 0 5px 10px;
+            }
+            article[lang]::before {
+                content: 'lang: ' attr(lang);
+                display: inline-block;
+                padding: 2px 4px;
+                background: lightgrey;
+                color: #222;
+                pointer-events: none;
             }
         </style>
     </head>
@@ -86,6 +110,11 @@
                 <div>
                     low
                     <input type="range" value="2" min="0" max="4" step="1" name="volume" id="volume" disabled /> high
+                </div>
+                <label>Gender:</label>
+                <div>
+                    female <input type="radio" value="female" name="gender" id="gender_f" disabled />
+                    male <input type="radio" value="male" name="gender" id="gender_m" disabled />
                 </div>
             </fieldset>
         </nav>
@@ -343,7 +372,45 @@
                     1967 in un suo discorso a seguito del suggerimento di uno spettatore mai identificato.
                 </p>
             </article>
+            <article lang="de" tabindex="0">
+                <h1>Schwarzes Loch<span class="do-not-read"> (Deutsch)</span></h1>
+                <p>Ein Schwarzes Loch ist ein Objekt, dessen Masse auf ein extrem kleines Volumen konzentriert ist und infolge dieser Kompaktheit in seiner unmittelbaren Umgebung eine so starke Gravitation erzeugt, dass nicht einmal das Licht diesen Bereich verlassen oder durchlaufen kann.</p>
+            </article>
+            <article lang="nl" tabindex="0">
+                <h1>Zwart gat<span class="do-not-read"> (Nederlands)</span></h1>
+                <p>Volgens de algemene relativiteitstheorie is een zwart gat een gebied in de astronomische ruimte waaruit niets - geen deeltjes en zelfs geen licht - kan ontsnappen.</p>
+            </article>
+            <article lang="es" tabindex="0">
+                <h1>Agujero negro<span class="do-not-read"> (Español)</span></h1>
+                <p>Un agujero negro es una región finita del espacio cuyo interior posee una concentración de masa lo suficientemente elevada como para generar un campo gravitatorio tal que, salvo por un determinado tipo de procesos cuánticos, ninguna partícula ni radiación — ni siquiera la luz — pueden escapar de él.</p>
+            </article>
+            <article lang="pt" tabindex="0">
+                <h1>Buraco negro<span class="do-not-read"> (Portugues)</span></h1>
+                <p>Buraco negro é uma região do espaço-tempo em que o campo gravitacional é tão intenso que nada — nenhuma partícula ou radiação eletromagnética como a luz — pode escapar.</p>
+            </article>
+            <article lang="pl-pl" tabindex="0">
+                <h1>Czarna dziura<span class="do-not-read"> (Polski)</span></h1>
+                <p>Czarna dziura - obszar czasoprzestrzeni, którego z uwagi na wpływ grawitacji, nic - łącznie ze światłem i informacją - nie może opuścić.</p>
+            </article>
+            <article lang="sv-SE" tabindex="0">
+                <h1>Svart hål<span class="do-not-read"> (Svenska)</span></h1>
+                <p>Ett svart hål är, enligt den allmänna relativitetsteorin, en koncentration av massa med ett så starkt gravitationsfält att ingenting, inte ens ljus, kan övervinna kroppens gravitation.</p>
+            </article>
+            <article lang="ja" tabindex="0">
+                <h1>ブラックホール<span class="do-not-read"> (日本語)</span></h1>
+                <p>ブラックホール は、宇宙空間に存在する天体のうち、極めて高密度で、極端に重力が強いために物質だけでなく光さえ脱出することでがきない天体である。</p>
+            </article>
+            <article lang="ar" dir="rtl" tabindex="0">
+                <h1>ثقب أسود</h1>
+                <p>الثقب الأسود هو منطقة موجودة في الزمكان (الفضاء بأبعاده الأربعة، وهي الأبعاد الثلاثة بالإضافة إلى الزمن) تتميز بجاذبية قوية جداً بحيث لا يمكن لأي شيء - ولا حتى الجسيمات أو موجات الإشعاع الكهرومغناطيسي مثل الضوء - الإفلات منها. تتنبأ النظرية النسبية العامة بأنه يمكن لكتلة فائقة الضخامة أن تنضغط بقدر معين بحيث تشوه الزمكان وتشكيل ثقب أسود. يُطلق على حدود المنطقة التي لا يُمكن الهروب منها اسم أفق الحدث.</p>
+            </article>
+            <article lang="en" tabindex="0">
+                <h1>MathJax <span class="do-not-read">(English)</span></h1>
+                <p>
+                    When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+                </p>
+            </article>
         </main>
-        <script type="module" src="bundle.js"></script>
     </body>
 </html>
