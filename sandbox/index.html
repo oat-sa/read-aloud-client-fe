@@ -17,7 +17,12 @@
                         }
                     }
                 },
-                tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] }
+                tex: {
+                    inlineMath: [
+                        ['$', '$'],
+                        ['\\(', '\\)']
+                    ]
+                }
             };
         </script>
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
@@ -52,7 +57,7 @@
             [name='preferences'] label + div {
                 padding: 0 0 5px 10px;
             }
-            article[lang]::before {
+            main [lang]::before {
                 content: 'lang: ' attr(lang);
                 display: inline-block;
                 padding: 2px 4px;
@@ -85,6 +90,7 @@
                     <option value="nb">Article in Bokmål</option>
                     <option value="nn_NO">Article in Nynorsk</option>
                     <option value="it">Article in Italian</option>
+                    <option value="en-GB-math">MathJax in English</option>
                 </select>
                 <br />
                 <button name="play-selection" disabled>play Selection</button>
@@ -404,12 +410,13 @@
                 <h1>ثقب أسود</h1>
                 <p>الثقب الأسود هو منطقة موجودة في الزمكان (الفضاء بأبعاده الأربعة، وهي الأبعاد الثلاثة بالإضافة إلى الزمن) تتميز بجاذبية قوية جداً بحيث لا يمكن لأي شيء - ولا حتى الجسيمات أو موجات الإشعاع الكهرومغناطيسي مثل الضوء - الإفلات منها. تتنبأ النظرية النسبية العامة بأنه يمكن لكتلة فائقة الضخامة أن تنضغط بقدر معين بحيث تشوه الزمكان وتشكيل ثقب أسود. يُطلق على حدود المنطقة التي لا يُمكن الهروب منها اسم أفق الحدث.</p>
             </article>
-            <article lang="en" tabindex="0">
+            <article lang="en-GB-math" tabindex="0">
                 <h1>MathJax <span class="do-not-read">(English)</span></h1>
                 <p>
                     When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
                     $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
                 </p>
+                <p lang="it">Guarda la formula. <span lang="fr-fr">Regardez le formule.</span></p>
             </article>
         </main>
     </body>
