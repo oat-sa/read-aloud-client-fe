@@ -13,7 +13,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2021 (original work) Open Assessment Technologies SA ;
+ * Copyright (c) 2021-2023 (original work) Open Assessment Technologies SA ;
  */
 import getReadAloudClient, { getAvailableProviders } from '../index.js';
 
@@ -62,7 +62,8 @@ describe('get read aloud client', () => {
             Promise.resolve({
                 play: jest.fn(),
                 playSelection: jest.fn(),
-                stop: jest.fn()
+                stop: jest.fn(),
+                destroy: jest.fn()
             })
         );
         return getReadAloudClient('custom').then(() => {
@@ -79,6 +80,7 @@ describe('get read aloud client', () => {
         const isReading = jest.fn();
         const onReadStart = jest.fn();
         const onReadEnd = jest.fn();
+        const destroy = jest.fn();
         providers.custom.mockImplementation(() =>
             Promise.resolve({
                 play,
@@ -88,7 +90,8 @@ describe('get read aloud client', () => {
                 ignoreElements,
                 isReading,
                 onReadStart,
-                onReadEnd
+                onReadEnd,
+                destroy
             })
         );
         return getReadAloudClient('custom').then(client => {
@@ -118,6 +121,9 @@ describe('get read aloud client', () => {
 
             expect(onReadStart).toHaveBeenNthCalledWith(1, startHandler);
             expect(onReadEnd).toHaveBeenNthCalledWith(1, endHandler);
+
+            client.destroy();
+            expect(destroy).toHaveBeenCalled();
         });
     });
 });
