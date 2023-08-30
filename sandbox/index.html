@@ -4,7 +4,29 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
         <title>Read aloud client</title>
+        <script>
+            MathJax = {
+                loader: { load: ['a11y/sre'] },
+                options: {
+                    menuOptions: {
+                        settings: {
+                            assistiveMml: false,
+                            explorer: true
+                        }
+                    }
+                },
+                tex: {
+                    inlineMath: [
+                        ['$', '$'],
+                        ['\\(', '\\)']
+                    ]
+                }
+            };
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
+        <script type="module" src="bundle.js"></script>
         <style>
             main {
                 display: grid;
@@ -17,9 +39,8 @@
                 flex-flow: row nowrap;
                 margin: 15px;
             }
-
             article {
-                max-height: 300px;
+                max-height: 220px;
                 overflow: hidden;
                 overflow-y: auto;
                 border: solid 1px grey;
@@ -30,48 +51,77 @@
                 margin: 0 5px 5px 0;
                 max-width: 150px;
             }
+            [name='preferences'] label {
+                font-weight: bold;
+            }
+            [name='preferences'] label + div {
+                padding: 0 0 5px 10px;
+            }
+            main [lang]::before {
+                content: 'lang: ' attr(lang);
+                display: inline-block;
+                padding: 2px 4px;
+                background: lightgrey;
+                color: #222;
+                pointer-events: none;
+            }
         </style>
     </head>
     <body lang="fr">
         <nav>
             <fieldset name="providers">
                 <legend>Read Aloud provider</legend>
+                <textarea name="provider-config" placeholder="Provider config as JSON" rows="5" cols="20"></textarea>
+                <br />
                 <select name="provider">
                     <option value="">Select a provider</option>
                     <option value="readweb">ReadWeb</option>
                     <option value="native">Native</option>
+                    <option value="texthelp">TextHelp</option>
                 </select>
-                <br /><br />
-                <textarea name="provider-config" placeholder="Provider config as JSON" rows="5" cols="20"></textarea>
             </fieldset>
             <fieldset name="controls">
                 <legend>Controls</legend>
                 <button name="play" disabled>play</button>
                 <select name="article-lang" disabled>
                     <option value="en-GB">Article in English</option>
+                    <option value="da">Article in Danish</option>
                     <option value="fr-BE">Article in French</option>
-                    <option value="da">Article in Dansih</option>
                     <option value="nb">Article in Bokmål</option>
                     <option value="nn_NO">Article in Nynorsk</option>
+                    <option value="it">Article in Italian</option>
+                    <option value="en-GB-math">MathJax in English</option>
                 </select>
+                <br />
                 <button name="play-selection" disabled>play Selection</button>
+                <br />
+                <button name="pause" disabled>pause</button>
+                <button name="resume" disabled>resume</button>
+                <br />
                 <button name="stop" disabled>stop</button>
+                <br />
+                <label><input name="click-to-speak" type="checkbox" />click-to-speak</label>
             </fieldset>
             <fieldset name="preferences">
                 <legend>Preferences</legend>
-                <label>
-                    Speed:<br />
-                    slow <input type="range" value="2" min="0" max="5" step="1" name="speed" disabled /> fast
-                </label>
-                <br />
-                <label>
-                    Pitch:<br />
-                    low <input type="range" value="2" min="0" max="5" step="1" name="pitch" disabled /> high </label
-                ><br />
-                <label>
-                    volume:<br />
-                    low <input type="range" value="2" min="0" max="5" step="1" name="volume" disabled /> high
-                </label>
+                <label for="speed">Speed:</label>
+                <div>
+                    slow <input type="range" value="2" min="0" max="4" step="1" name="speed" id="speed" disabled /> fast
+                </div>
+                <label for="pitch">Pitch:</label>
+                <div>
+                    low <input type="range" value="2" min="0" max="4" step="1" name="pitch" id="pitch" disabled /> high
+                </div>
+                <label for="volume">Volume:</label>
+                <div>
+                    low
+                    <input type="range" value="2" min="0" max="4" step="1" name="volume" id="volume" disabled /> high
+                </div>
+                <label>Gender:</label>
+                <div>
+                    female <input type="radio" value="female" name="gender" id="gender_f" disabled />
+                    male <input type="radio" value="male" name="gender" id="gender_m" disabled />
+                </div>
             </fieldset>
         </nav>
         <main>
@@ -114,7 +164,6 @@
                     most galaxies.
                 </p>
             </article>
-
             <article lang="da">
                 <h1>Sort hul<span class="do-not-read"> (Danish)</span></h1>
                 <img
@@ -291,7 +340,114 @@
                     partiklar slepp unna over mange år, vil det svarte hòlet ha dunsta bort.
                 </p>
             </article>
+            <article lang="it" tabindex="0">
+                <h1>Buco nero<span class="do-not-read"> (Italiano)</span></h1>
+                <img
+                    alt="La prima prova visiva diretta della presenza di un buco nero al centro della nostra Galassia, la Via Lattea"
+                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
+                />
+                <p>
+                    In astrofisica, un buco nero è un corpo celeste con un campo gravitazionale così intenso (ovvero,
+                    una regione dello spaziotempo con una curvatura talmente grande) che dal suo interno non può uscire
+                    nulla, nemmeno la luce[3] essendo la velocità di fuga superiore a c.
+                </p>
+                <p>
+                    Il buco nero è il risultato di implosioni di masse sufficientemente elevate. La gravità domina su
+                    qualsiasi altra forza, determinando un collasso gravitazionale che tende a concentrare lo
+                    spaziotempo in un punto[4] al centro della regione, dove è teorizzato uno stato della materia di
+                    curvatura tendente a infinito e volume tendente a zero chiamato singolarità, con caratteristiche
+                    sconosciute ed estranee alle leggi della relatività generale. Il limite del buco nero è definito
+                    orizzonte degli eventi, regione che ne delimita in modo peculiare i confini osservabili.
+                </p>
+                <p>
+                    Per le suddette proprietà, il buco nero non è osservabile direttamente. La sua presenza si rivela
+                    solo indirettamente mediante i suoi effetti sullo spazio circostante: le interazioni gravitazionali
+                    con altri corpi celesti e le loro emissioni, le irradiazioni principalmente elettromagnetiche della
+                    materia catturata dal suo campo di forza.
+                </p>
+                <p>
+                    Nel corso dei decenni successivi alla pubblicazione della relatività generale, base teorica della
+                    loro esistenza, vennero raccolte numerose osservazioni interpretabili, pur non sempre univocamente,
+                    come prove della presenza di buchi neri, specialmente in alcune galassie attive e sistemi stellari
+                    di binarie X.[5] L'esistenza di tali oggetti è oggi definitivamente dimostrata e via via ne vengono
+                    individuati di nuovi con massa molto variabile, da valori di circa 5 fino a miliardi di masse
+                    solari.
+                </p>
+                <p>
+                    Il termine "buco nero" fu coniato dal fisico John Archibald Wheeler, che lo utilizzò a partire dal
+                    1967 in un suo discorso a seguito del suggerimento di uno spettatore mai identificato.
+                </p>
+            </article>
+            <article lang="de" tabindex="0">
+                <h1>Schwarzes Loch<span class="do-not-read"> (Deutsch)</span></h1>
+                <p>
+                    Ein Schwarzes Loch ist ein Objekt, dessen Masse auf ein extrem kleines Volumen konzentriert ist und
+                    infolge dieser Kompaktheit in seiner unmittelbaren Umgebung eine so starke Gravitation erzeugt, dass
+                    nicht einmal das Licht diesen Bereich verlassen oder durchlaufen kann.
+                </p>
+            </article>
+            <article lang="nl" tabindex="0">
+                <h1>Zwart gat<span class="do-not-read"> (Nederlands)</span></h1>
+                <p>
+                    Volgens de algemene relativiteitstheorie is een zwart gat een gebied in de astronomische ruimte
+                    waaruit niets - geen deeltjes en zelfs geen licht - kan ontsnappen.
+                </p>
+            </article>
+            <article lang="es" tabindex="0">
+                <h1>Agujero negro<span class="do-not-read"> (Español)</span></h1>
+                <p>
+                    Un agujero negro es una región finita del espacio cuyo interior posee una concentración de masa lo
+                    suficientemente elevada como para generar un campo gravitatorio tal que, salvo por un determinado
+                    tipo de procesos cuánticos, ninguna partícula ni radiación — ni siquiera la luz — pueden escapar de
+                    él.
+                </p>
+            </article>
+            <article lang="pt" tabindex="0">
+                <h1>Buraco negro<span class="do-not-read"> (Portugues)</span></h1>
+                <p>
+                    Buraco negro é uma região do espaço-tempo em que o campo gravitacional é tão intenso que nada —
+                    nenhuma partícula ou radiação eletromagnética como a luz — pode escapar.
+                </p>
+            </article>
+            <article lang="pl-pl" tabindex="0">
+                <h1>Czarna dziura<span class="do-not-read"> (Polski)</span></h1>
+                <p>
+                    Czarna dziura - obszar czasoprzestrzeni, którego z uwagi na wpływ grawitacji, nic - łącznie ze
+                    światłem i informacją - nie może opuścić.
+                </p>
+            </article>
+            <article lang="sv-SE" tabindex="0">
+                <h1>Svart hål<span class="do-not-read"> (Svenska)</span></h1>
+                <p>
+                    Ett svart hål är, enligt den allmänna relativitetsteorin, en koncentration av massa med ett så
+                    starkt gravitationsfält att ingenting, inte ens ljus, kan övervinna kroppens gravitation.
+                </p>
+            </article>
+            <article lang="ja" tabindex="0">
+                <h1>ブラックホール<span class="do-not-read"> (日本語)</span></h1>
+                <p>
+                    ブラックホール
+                    は、宇宙空間に存在する天体のうち、極めて高密度で、極端に重力が強いために物質だけでなく光さえ脱出することでがきない天体である。
+                </p>
+            </article>
+            <article lang="ar" dir="rtl" tabindex="0">
+                <h1>ثقب أسود</h1>
+                <p>
+                    الثقب الأسود هو منطقة موجودة في الزمكان (الفضاء بأبعاده الأربعة، وهي الأبعاد الثلاثة بالإضافة إلى
+                    الزمن) تتميز بجاذبية قوية جداً بحيث لا يمكن لأي شيء - ولا حتى الجسيمات أو موجات الإشعاع
+                    الكهرومغناطيسي مثل الضوء - الإفلات منها. تتنبأ النظرية النسبية العامة بأنه يمكن لكتلة فائقة الضخامة
+                    أن تنضغط بقدر معين بحيث تشوه الزمكان وتشكيل ثقب أسود. يُطلق على حدود المنطقة التي لا يُمكن الهروب
+                    منها اسم أفق الحدث.
+                </p>
+            </article>
+            <article lang="en-GB-math" tabindex="0">
+                <h1>MathJax <span class="do-not-read">(English)</span></h1>
+                <p>
+                    When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+                </p>
+                <p lang="it">Guarda la formula. <span lang="fr-fr">Regardez le formule.</span></p>
+            </article>
         </main>
-        <script type="module" src="bundle.js"></script>
     </body>
 </html>

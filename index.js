@@ -13,7 +13,7 @@
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
  *
- * Copyright (c) 2021 (original work) Open Assessment Technologies SA ;
+ * Copyright (c) 2021-2023 (original work) Open Assessment Technologies SA ;
  */
 
 import * as providers from './lib/providers/index.js';
@@ -33,22 +33,35 @@ export default function getReadAloudClient(providerId, config = {}) {
     }
 
     return providerFactory(config).then(provider => {
-        if (['play', 'playSelection', 'stop'].some(method => typeof provider[method] !== 'function')) {
+        if (['play', 'playSelection', 'stop', 'destroy'].some(method => typeof provider[method] !== 'function')) {
             return Promise.reject(new TypeError(`The provider ${providerId} does not comply with the API.`));
         }
 
         /**
          * @typedef {Object} ReadAloudClient
+         * @property {string} id
          * @property {function} play
          * @property {function} playSelection
+         * @property {function} [pause]
+         * @property {function} [resume]
          * @property {function} [isReading]
          * @property {function} [onReadStart]
          * @property {function} [onReadStop]
          * @property {function} stop
+         * @property {function} [toggleClickToSpeak]
          * @property {function} [ignoreElements]
          * @property {function} [setPreferences]
+         * @property {function} destroy
          */
         return {
+            /**
+             * Identifier
+             * @returns {string}
+             */
+            get id() {
+                return provider.id;
+            },
+
             /**
              * Start playing from that element
              * @param {HTMLElement} element
@@ -67,14 +80,33 @@ export default function getReadAloudClient(providerId, config = {}) {
             },
 
             /**
+             * Pause the current playing (with the ability to resume)
+             * @returns {*}
+             */
+            pause() {
+                if (typeof provider.pause === 'function') {
+                    return provider.pause();
+                }
+            },
+
+            /**
+             * Resume the current paused playing
+             * @returns {*}
+             */
+            resume() {
+                if (typeof provider.resume === 'function') {
+                    return provider.resume();
+                }
+            },
+
+            /**
              * Is playing ongoing
-             * @returns {boolean?}
+             * @returns {boolean|undefined}
              */
             isReading() {
                 if (typeof provider.isReading === 'function') {
                     return provider.isReading();
                 }
-                return void 0;
             },
 
             /**
@@ -103,6 +135,16 @@ export default function getReadAloudClient(providerId, config = {}) {
              */
             stop() {
                 return provider.stop();
+            },
+
+            /**
+             * Enables or disables the "Click To Speak" mode
+             * @returns {boolean|undefined} true if enabled
+             */
+            toggleClickToSpeak() {
+                if (typeof provider.toggleClickToSpeak === 'function') {
+                    return provider.toggleClickToSpeak();
+                }
             },
 
             /**
@@ -140,6 +182,14 @@ export default function getReadAloudClient(providerId, config = {}) {
                 if (typeof provider.ignoreElements === 'function') {
                     return provider.ignoreElements(selector);
                 }
+            },
+
+            /**
+             * Destroy the provider
+             * @returns {*}
+             */
+            destroy() {
+                return provider.destroy();
             }
         };
     });
