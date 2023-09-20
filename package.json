@@ -1,6 +1,6 @@
 {
     "name": "@oat-sa-private/read-aloud-client",
-    "version": "0.7.0",
+    "version": "0.7.1",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
     "module": "index.js",
@@ -10,8 +10,10 @@
         "lint": "eslint -c .eslintrc.js --ext js .",
         "lint:report": "eslint -c .eslintrc.js --output-file eslint_report.json --format json --ext js .",
         "build": "rollup -c rollup.config.js",
+        "build:watch": "npm run build -- --watch",
         "build:dev": "rollup --watch -c sandbox/rollup.config.js",
         "test": "jest --config=jest.config.js",
+        "test:watch": "npm test -- --watch",
         "test:cov": "npm test -- --coverage",
         "serve:sandbox": "sirv sandbox --port 5400 --dev --http2 --key keys/localhost-key.pem --cert keys/localhost-cert.pem",
         "dev:sandbox": "run-p serve:sandbox build:dev",
