@@ -175,17 +175,6 @@ export default function getReadAloudClient(providerId, config = {}) {
             },
 
             /**
-             * @typedef {Object} OptionConstraints
-             * @property {Object} voice - Voice configuration.
-             * @property {boolean} voice.disabled
-             * @property {Object} speed - Speed configuration.
-             * @property {boolean} speed.disabled
-             * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
-             * @property {Object} pitch - Pitch configuration.
-             * @property {boolean} pitch.disabled
-             */
-
-            /**
              * Ignore elements with the given selector
              * @param {string} selector - any dom selector
              * @returns {*}
@@ -197,8 +186,19 @@ export default function getReadAloudClient(providerId, config = {}) {
             },
 
             /**
+             * @typedef {Object} OptionConstraints
+             * @property {Object} voice - Voice configuration.
+             * @property {boolean} voice.disabled
+             * @property {Object} speed - Speed configuration.
+             * @property {boolean} speed.disabled
+             * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
+             * @property {Object} pitch - Pitch configuration.
+             * @property {boolean} pitch.disabled
+             */
+
+            /**
              * Supported provider configuration options
-             * @returns {*}
+             * @returns {OptionConstraints}
              */
             getSupport() {
                 if (typeof provider.getSupport === 'function') {
