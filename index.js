@@ -175,6 +175,17 @@ export default function getReadAloudClient(providerId, config = {}) {
             },
 
             /**
+             * @typedef {Object} OptionConstraints
+             * @property {Object} voice - Voice configuration.
+             * @property {boolean} voice.disabled
+             * @property {Object} speed - Speed configuration.
+             * @property {boolean} speed.disabled
+             * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
+             * @property {Object} pitch - Pitch configuration.
+             * @property {boolean} pitch.disabled
+             */
+
+            /**
              * Ignore elements with the given selector
              * @param {string} selector - any dom selector
              * @returns {*}
@@ -191,17 +202,25 @@ export default function getReadAloudClient(providerId, config = {}) {
              */
             getSupport() {
                 if (typeof provider.getSupport === 'function') {
-                    /**
-                     * @typedef {Object} OptionConstraints
-                     * @property {Object} voice - Voice configuration.
-                     * @property {boolean} voice.disabled
-                     * @property {Object} speed - Speed configuration.
-                     * @property {boolean} speed.disabled
-                     * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
-                     * @property {Object} pitch - Pitch configuration.
-                     * @property {boolean} pitch.disabled
-                     */
                     return provider.getSupport();
+                } else {
+                    /*
+                     * Default "Enable all" case
+                     */
+                    return {
+                        voice: { disabled: false },
+                        speed: {
+                            disabled: false,
+                            options: [
+                                speeds.slowest,
+                                speeds.slow,
+                                speeds.normal,
+                                speeds.fast,
+                                speeds.fastest
+                            ],
+                        },
+                        pitch:  { disabled: false },
+                    };
                 }
             },
 
