@@ -45,6 +45,7 @@ Optional methods that may not be implemented by every provider:
 -   `boolean: toggleClickToSpeak()` : Toggles the state of a "click-to-speak" mode, if supported.
 -   `setPreferences( { string: speed, string: pitch, string: volume, string: voice })` : Change the reading preferences. See the [available values for the preferences].(./lib/preferences.js).
 -   `ignoreElements(string: selector)` : do not read the elements matching the given DOM selector.
+-   `getSupport()` : Returns the structure with configuration options available for provider
 
 ## Supported Providers
 

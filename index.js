@@ -51,6 +51,7 @@ export default function getReadAloudClient(providerId, config = {}) {
          * @property {function} [toggleClickToSpeak]
          * @property {function} [ignoreElements]
          * @property {function} [setPreferences]
+         * @property {function} [getSupport]
          * @property {function} destroy
          */
         return {
@@ -181,6 +182,45 @@ export default function getReadAloudClient(providerId, config = {}) {
             ignoreElements(selector) {
                 if (typeof provider.ignoreElements === 'function') {
                     return provider.ignoreElements(selector);
+                }
+            },
+
+            /**
+             * @typedef {Object} OptionConstraints
+             * @property {Object} voice - Voice configuration.
+             * @property {boolean} voice.disabled
+             * @property {Object} speed - Speed configuration.
+             * @property {boolean} speed.disabled
+             * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
+             * @property {Object} pitch - Pitch configuration.
+             * @property {boolean} pitch.disabled
+             */
+
+            /**
+             * Supported provider configuration options
+             * @returns {OptionConstraints}
+             */
+            getSupport() {
+                if (typeof provider.getSupport === 'function') {
+                    return provider.getSupport();
+                } else {
+                    /*
+                     * Default "Enable all" case
+                     */
+                    return {
+                        voice: { disabled: false },
+                        speed: {
+                            disabled: false,
+                            options: [
+                                speeds.slowest,
+                                speeds.slow,
+                                speeds.normal,
+                                speeds.fast,
+                                speeds.fastest
+                            ],
+                        },
+                        pitch:  { disabled: false },
+                    };
                 }
             },
 
