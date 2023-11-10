@@ -166,3 +166,4 @@ npx jest --watch
 Copyright (c) 2021-2023 Open Assessment Technologies SA
 
 Licensed under the terms of the [GNU GPL v2](./LICENSE)
+
