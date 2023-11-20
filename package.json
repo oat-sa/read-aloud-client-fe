@@ -29,7 +29,7 @@
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/oat-sa/read-aloud-client.git"
+        "url": "git+https://github.com/oat-sa/read-aloud-client-fe.git"
     },
     "author": {
         "name": "Open Assessment Technologies SA"
