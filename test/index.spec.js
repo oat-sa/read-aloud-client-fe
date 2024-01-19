@@ -163,7 +163,8 @@ describe('get read aloud client', () => {
                     },
                     "voice": {
                         "disabled": false
-                    }
+                    },
+                    "clickToSpeak": false
                 }
             );
         });
