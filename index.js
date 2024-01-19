@@ -220,6 +220,7 @@ export default function getReadAloudClient(providerId, config = {}) {
                             ],
                         },
                         pitch:  { disabled: false },
+                        clickToSpeak: false,
                     };
                 }
             },
