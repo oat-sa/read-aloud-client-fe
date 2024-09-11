@@ -30,7 +30,7 @@
         <style>
             main {
                 display: grid;
-                grid-template-columns: 1fr 1fr;
+                grid-template-columns: 1fr 1fr 1fr;
                 gap: 15px;
                 margin: 15px;
             }
@@ -67,7 +67,7 @@
             }
         </style>
     </head>
-    <body lang="fr">
+    <body lang="en">
         <nav>
             <fieldset name="providers">
                 <legend>Read Aloud provider</legend>
@@ -84,6 +84,7 @@
                 <legend>Controls</legend>
                 <button name="play" disabled>play</button>
                 <select name="article-lang" disabled>
+                    <!-- a variety of lang formats are used on the page, to simulate real-world content -->
                     <option value="en-GB">Article in English</option>
                     <option value="cy-GB">Article in Welsh</option>
                     <option value="da">Article in Danish</option>
@@ -91,6 +92,15 @@
                     <option value="nb">Article in Bokmål</option>
                     <option value="nn_NO">Article in Nynorsk</option>
                     <option value="it">Article in Italian</option>
+                    <option value="de">Article in German</option>
+                    <option value="nl">Article in Dutch</option>
+                    <option value="es">Article in Spanish</option>
+                    <option value="pt">Article in Portuguese</option>
+                    <option value="pl-pl">Article in Polish</option>
+                    <option value="sv-SE">Article in Swedish</option>
+                    <option value="lt-LT">Article in Lithuanian</option>
+                    <option value="ja">Article in Japanese</option>
+                    <option value="ar">Article in Arabic</option>
                     <option value="en-GB-math">MathJax in English</option>
                 </select>
                 <br />
@@ -432,6 +442,15 @@
                 <p>
                     Ett svart hål är, enligt den allmänna relativitetsteorin, en koncentration av massa med ett så
                     starkt gravitationsfält att ingenting, inte ens ljus, kan övervinna kroppens gravitation.
+                </p>
+            </article>
+            <article lang="lt-LT" tabindex="0">
+                <h1>Juodoji bedugnė <span class="do-not-read">(Lietuva)</span></h1>
+                <p>
+                    Juodoji bedugnė arba juodoji skylė – kosminis darinys, kurio paviršiuje, vadinamame įvykių horizontu, traukos jėga stipresnė už kritinę reikšmę, kuriai esant, šviesa dar gali palikti objekto paviršių. Gravitacinės traukos jėga tos pačios masės objektui stiprėja, mažėjant jo spinduliui.
+                </p>
+                <p>
+                    Juodųjų bedugnių susidarymą ir savybes aiškina bendroji reliatyvumo teorija.
                 </p>
             </article>
             <article lang="ja" tabindex="0">
