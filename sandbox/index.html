@@ -92,38 +92,52 @@
         <nav>
             <fieldset name="providers">
                 <legend>Read Aloud provider</legend>
-                <textarea name="provider-config" placeholder="Provider config as JSON" rows="5" cols="20"></textarea>
-                <br />
-                <select name="provider">
+                <select title="provider" name="provider">
                     <option value="">Select a provider</option>
                     <option value="readweb">ReadWeb</option>
                     <option value="native">Native</option>
                     <option value="texthelp">TextHelp</option>
                 </select>
+                <br />
+                <!-- keep textarea contents indentation minimal -->
+                <textarea name="provider-config" placeholder="Provider config as JSON" rows="10" cols="30">
+{
+  "url": "https://toolbar.speechstream.net/SpeechStream/3.9.5/speechstream.js",
+  "speechstreamConfig": "TAOPremiumv395R1",
+  "disableLangCheck": true,
+  "voiceLanguage": "es-US"
+}
+                </textarea>
             </fieldset>
             <fieldset name="controls">
                 <legend>Controls</legend>
                 <button name="play" disabled>play</button>
-                <select name="article-lang" disabled>
+                <select title="article-lang" name="article-lang" disabled>
                     <!-- a variety of lang formats are used on the page, to simulate real-world content -->
                     <option value="en-GB">Article in English</option>
-                    <option value="cy-GB">Article in Welsh</option>
-                    <option value="da">Article in Danish</option>
-                    <option value="fr-BE">Article in French</option>
-                    <option value="nb">Article in Bokmål</option>
-                    <option value="nn_NO">Article in Nynorsk</option>
+                    <option value="fr">Article in French</option>
                     <option value="it">Article in Italian</option>
+                    <option value="da">Article in Danish</option>
+                    <option value="nb">Article in Norwegian (Bokmål)</option>
+                    <option value="nn-NO">Article in Norwegian (Nynorsk)</option>
+                    <option value="sv-SE">Article in Swedish</option>
                     <option value="de">Article in German</option>
                     <option value="nl">Article in Dutch</option>
-                    <option value="es">Article in Spanish</option>
+                    <option value="nl-BE">Article in Flemish</option>
+                    <option value="es">Article in Spanish (regionless)</option>
                     <option value="ca-ES">Article in Catalan</option>
                     <option value="val-ES">Article in Valencian Spanish</option>
+                    <option value="gl-ES">Article in Galician</option>
                     <option value="pt">Article in Portuguese</option>
                     <option value="pl-pl">Article in Polish</option>
-                    <option value="sv-SE">Article in Swedish</option>
                     <option value="lt-LT">Article in Lithuanian</option>
+                    <option value="cy-GB">Article in Welsh</option>
+                    <option value="is">Article in Icelandic</option>
+                    <option value="sk">Article in Slovakian</option>
+                    <option value="ro">Article in Romanian</option>
+                    <option value="zh">Article in Chinese (Traditional)</option>
                     <option value="ja">Article in Japanese</option>
-                    <option value="ar">Article in Arabic</option>
+                    <option value="ar-arb">Article in Arabic</option>
                     <option value="en-GB-math">MathJax in English</option>
                 </select>
                 <br />
@@ -153,372 +167,455 @@
                 </div>
                 <label>Gender:</label>
                 <div>
-                    female <input type="radio" value="female" name="gender" id="gender_f" disabled />
-                    male <input type="radio" value="male" name="gender" id="gender_m" disabled />
+                    <label>female <input type="radio" value="female" name="gender" id="gender_f" checked disabled /></label>
+                    <label>male <input type="radio" value="male" name="gender" id="gender_m" disabled /></label>
                 </div>
             </fieldset>
         </nav>
         <main>
-            <article lang="en-GB" tabindex="0">
-                <h1>Black hole<span class="do-not-read"> (English)</span></h1>
-                <img
-                    alt="M87* by Event Horizon"
-                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
-                />
-                <p>
-                    A black hole is a region of spacetime where gravity is so strong that nothing—no particles or even
-                    electromagnetic radiation such as light—can escape from it.[1] The theory of general relativity
-                    predicts that a sufficiently compact mass can deform spacetime to form a black hole.[2][3] The
-                    boundary of no escape is called the event horizon. Although it has an enormous effect on the fate
-                    and circumstances of an object crossing it, according to general relativity it has no locally
-                    detectable features.[4] In many ways, a black hole acts like an ideal black body, as it reflects no
-                    light.[5][6] Moreover, quantum field theory in curved spacetime predicts that event horizons emit
-                    Hawking radiation, with the same spectrum as a black body of a temperature inversely proportional to
-                    its mass. This temperature is on the order of billionths of a kelvin for black holes of stellar
-                    mass, making it essentially impossible to observe directly.
-                </p>
+            <section>
+                <article lang="en-GB" tabindex="0">
+                    <h1>Black hole<span class="do-not-read"> (English)</span></h1>
+                    <img
+                        alt="M87* by Event Horizon"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
+                    />
+                    <!-- <h2><span data-pron="coffee, white">Copyright</span> <span data-pron="open assessment technologies">OAT</span></h2> -->
+                    <p>
+                        A black hole is a region of spacetime where gravity is so strong that nothing—no particles or even
+                        electromagnetic radiation such as light—can escape from it.[1] The theory of general relativity
+                        predicts that a sufficiently compact mass can deform spacetime to form a black hole.[2][3] The
+                        boundary of no escape is called the event horizon. Although it has an enormous effect on the fate
+                        and circumstances of an object crossing it, according to general relativity it has no locally
+                        detectable features.[4] In many ways, a black hole acts like an ideal black body, as it reflects no
+                        light.[5][6] Moreover, quantum field theory in curved spacetime predicts that event horizons emit
+                        Hawking radiation, with the same spectrum as a black body of a temperature inversely proportional to
+                        its mass. This temperature is on the order of billionths of a kelvin for black holes of stellar
+                        mass, making it essentially impossible to observe directly.
+                    </p>
 
-                <p>
-                    Objects whose gravitational fields are too strong for light to escape were first considered in the
-                    18th century by John Michell and Pierre-Simon Laplace.[7] The first modern solution of general
-                    relativity that would characterize a black hole was found by Karl Schwarzschild in 1916, and its
-                    interpretation as a region of space from which nothing can escape was first published by David
-                    Finkelstein in 1958. Black holes were long considered a mathematical curiosity; it was not until the
-                    1960s that theoretical work showed they were a generic prediction of general relativity. The
-                    discovery of neutron stars by Jocelyn Bell Burnell in 1967 sparked interest in gravitationally
-                    collapsed compact objects as a possible astrophysical reality. The first black hole known as such
-                    was Cygnus X-1, identified by several researchers independently in 1971.
-                </p>
+                    <p>
+                        Objects whose gravitational fields are too strong for light to escape were first considered in the
+                        18th century by John Michell and Pierre-Simon Laplace.[7] The first modern solution of general
+                        relativity that would characterize a black hole was found by Karl Schwarzschild in 1916, and its
+                        interpretation as a region of space from which nothing can escape was first published by David
+                        Finkelstein in 1958. Black holes were long considered a mathematical curiosity; it was not until the
+                        1960s that theoretical work showed they were a generic prediction of general relativity. The
+                        discovery of neutron stars by Jocelyn Bell Burnell in 1967 sparked interest in gravitationally
+                        collapsed compact objects as a possible astrophysical reality. The first black hole known as such
+                        was Cygnus X-1, identified by several researchers independently in 1971.
+                    </p>
 
-                <p>
-                    Black holes of stellar mass form when very massive stars collapse at the end of their life cycle.
-                    After a black hole has formed, it can continue to grow by absorbing mass from its surroundings. By
-                    absorbing other stars and merging with other black holes, supermassive black holes of millions of
-                    solar masses (M☉) may form. There is consensus that supermassive black holes exist in the centers of
-                    most galaxies.
-                </p>
-            </article>
-            <article lang="cy-GB" tabindex="0">
-                <h1>Twll du <span class="do-not-read">(Cymraeg)</span></h1>
-                <img
-                    alt="M87* by Event Horizon"
-                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
-                />
-                <p>
-                    Yn ôl damcaniaeth perthnasedd cyffredinol Einstein rhan o'r gofod yw twll du lle na all unrhyw beth (gan gynnwys golau) ddianc, o herwydd y duwch hwn y cafodd ei enw. Yr hyn sy'n atynnu popeth tuag ato yw disgyrchiant cryf, a phan fo rhywbeth yn cael ei sugno i'r twll, ni all fyth ddod oddi yno. Ceir ymyl, neu ffin, i'r twll du, sef yr union bwynt o ble na ddaw dim yn ôl, a gelwir y ffin hwn yn "orwel y digwyddiad".
-                </p>
-            </article>
-            <article lang="da">
-                <h1>Sort hul<span class="do-not-read"> (Danish)</span></h1>
-                <img
-                    alt="Et simuleret billede af et sort hul, set på en afstand af 600 km med Mælkevejen i baggrunden."
-                    src="//upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/300px-Black_Hole_Milkyway.jpg"
-                />
-                <p>
-                    Et sort hul er en samling af masse så stor/tæt, at end ikke elektromagnetiske bølger (f.eks.
-                    radiobølger og lys) kan udsendes fra dens "overflade".[1] Et massivt sort hul træffes ofte i centrum
-                    af en galakse, og de bliver i dag af mange forskere anset for at spille en vigtig rolle i
-                    galaksedannelse. Teoretiske overvejelser antyder at der er fra 100 millioner til 1 milliard sorte
-                    huller i vores Mælkevej, men indtil begyndelsen af 2017 var der kun fundet omkring 60.
-                </p>
+                    <p>
+                        Black holes of stellar mass form when very massive stars collapse at the end of their life cycle.
+                        After a black hole has formed, it can continue to grow by absorbing mass from its surroundings. By
+                        absorbing other stars and merging with other black holes, supermassive black holes of millions of
+                        solar masses (M☉) may form. There is consensus that supermassive black holes exist in the centers of
+                        most galaxies.
+                    </p>
+                </article>
+                <article lang="fr" tabindex="0">
+                    <h1>Trou noir<span class="do-not-read"> (French)</span></h1>
+                    <img
+                        alt="Le disque d'accrétion du trou noir M87* imagé par l'Event Horizon Telescope."
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
+                    />
+                    <p>
+                        En astrophysique, un trou noir est un objet céleste si compact que l'intensité de son champ
+                        gravitationnel empêche toute forme de matière ou de rayonnement de s’en échapper.
+                    </p>
 
-                <p>
-                    I 2008 blev det sandsynliggjort, at der er et stort sort hul i centrum af vores galakse Mælkevejen
-                    benævnt Sagittarius A*. Ifølge ESOs beregninger skulle det sorte hul have en masse på ca. 4.000.000
-                    gange vores egen sol. [4] [5] Et sort hul med en meget lysende skive af gas omkring sig kaldes en
-                    kvasar, en ældgammel form for galakse. Denne udsender en stærk stråling af både radiobølger, lys og
-                    røntgenstråling, hvilket gør den til et meget lysstærkt objekt.
-                </p>
+                    <p>
+                        De tels objets ne peuvent ni émettre, ni diffuser la lumière et sont donc noirs, ce qui en
+                        astronomie revient à dire qu'ils sont optiquement invisibles. Toutefois, plusieurs techniques
+                        d’observation indirecte dans différentes longueurs d'onde ont été mises au point et permettent
+                        d’étudier de nombreux phénomènes qu’ils induisent. En particulier, la matière happée par un trou
+                        noir est chauffée à des températures très élevées et émet une quantité importante de rayons X, avant
+                        d’être « absorbée ».
+                    </p>
 
-                <p>
-                    I 2020 blev det sandsynliggjort af astronomer på European Southern Observatory, at nærmeste opdagede
-                    sorte hul (del af HR 6819) er en del af Kikkerten, kun er 1000 lysår fra Jorden, Solsystemet.
-                </p>
+                    <p>
+                        Envisagée dès le XVIIIe siècle, dans le cadre de la mécanique classique, leur existence — prédite
+                        par la relativité générale — est une certitude pour la quasi-totalité des astrophysiciens et des
+                        physiciens théoriciens. Un trou noir n'étant détectable que par les effets de son champ
+                        gravitationnel, une observation quasi-directe de trous noirs a pu être établie en février 2016 par
+                        le biais de la première observation directe des ondes gravitationnelles, GW150914. Le 10 avril 2019,
+                        les premières images d'un trou noir sont publiées, celle de M87*, trou noir supermassif situé au
+                        cœur de la galaxie M87. Ces différentes observations apportent ainsi la preuve scientifique de leur
+                        existence.
+                    </p>
 
-                <p>
-                    Det sorte hul har principielt ikke nogen udstrækning, idet alt her er samlet i et enkelt punkt. Men
-                    det sorte huls størrelse/masse kan betegnes ved dets begivenhedshorisont, som udgør grænsen for,
-                    hvornår en begivenhed kan undslippe det sorte hul. Således er det sorte hul karakteriseret ved, at
-                    ekstrem meget masse er presset sammen på meget lidt plads (eller ingen plads). Hvis Jorden blev
-                    presset sammen til en tæthed som et sort hul, ville den fylde som en lille nød eller sukkerknald.
-                    Det indtil videre største observerede sorte hul har en masse, som er cirka 12 milliarder gange
-                    større end Solens,[10]hvilket betyder at deres begivenhedshorisont kan være op til en promille af et
-                    lysår.
-                </p>
+                    <p>
+                        Dans le cadre de la relativité générale, un trou noir est défini comme une singularité
+                        gravitationnelle occultée par un horizon absolu appelé horizon des évènements. Selon la physique
+                        quantique, un trou noir est susceptible de s'évaporer par l'émission d'un rayonnement de corps noir
+                        appelé rayonnement de Hawking.
+                    </p>
 
-                <p>
-                    Indenfor det sorte huls begivenhedshorisont, falder rumtiden hurtigere indad end "lyset" - eller
-                    rettere lysets hastighed i vakuum
-                </p>
-            </article>
-            <article lang="fr-BE" tabindex="0">
-                <h1>Trou noir<span class="do-not-read"> (French)</span></h1>
-                <img
-                    alt="Le disque d'accrétion du trou noir M87* imagé par l'Event Horizon Telescope."
-                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
-                />
-                <p>
-                    En astrophysique, un trou noir est un objet céleste si compact que l'intensité de son champ
-                    gravitationnel empêche toute forme de matière ou de rayonnement de s’en échapper.
-                </p>
+                    <p>Un trou noir ne doit pas être confondu avec un trou blanc ni avec un trou de ver.</p>
+                </article>
+                <article lang="it" tabindex="0">
+                    <h1>Buco nero<span class="do-not-read"> (Italiano)</span></h1>
+                    <img
+                        alt="La prima prova visiva diretta della presenza di un buco nero al centro della nostra Galassia, la Via Lattea"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
+                    />
+                    <p>
+                        In astrofisica, un buco nero è un corpo celeste con un campo gravitazionale così intenso (ovvero,
+                        una regione dello spaziotempo con una curvatura talmente grande) che dal suo interno non può uscire
+                        nulla, nemmeno la luce[3] essendo la velocità di fuga superiore a c.
+                    </p>
+                    <p>
+                        Il buco nero è il risultato di implosioni di masse sufficientemente elevate. La gravità domina su
+                        qualsiasi altra forza, determinando un collasso gravitazionale che tende a concentrare lo
+                        spaziotempo in un punto[4] al centro della regione, dove è teorizzato uno stato della materia di
+                        curvatura tendente a infinito e volume tendente a zero chiamato singolarità, con caratteristiche
+                        sconosciute ed estranee alle leggi della relatività generale. Il limite del buco nero è definito
+                        orizzonte degli eventi, regione che ne delimita in modo peculiare i confini osservabili.
+                    </p>
+                    <p>
+                        Per le suddette proprietà, il buco nero non è osservabile direttamente. La sua presenza si rivela
+                        solo indirettamente mediante i suoi effetti sullo spazio circostante: le interazioni gravitazionali
+                        con altri corpi celesti e le loro emissioni, le irradiazioni principalmente elettromagnetiche della
+                        materia catturata dal suo campo di forza.
+                    </p>
+                    <p>
+                        Nel corso dei decenni successivi alla pubblicazione della relatività generale, base teorica della
+                        loro esistenza, vennero raccolte numerose osservazioni interpretabili, pur non sempre univocamente,
+                        come prove della presenza di buchi neri, specialmente in alcune galassie attive e sistemi stellari
+                        di binarie X.[5] L'esistenza di tali oggetti è oggi definitivamente dimostrata e via via ne vengono
+                        individuati di nuovi con massa molto variabile, da valori di circa 5 fino a miliardi di masse
+                        solari.
+                    </p>
+                    <p>
+                        Il termine "buco nero" fu coniato dal fisico John Archibald Wheeler, che lo utilizzò a partire dal
+                        1967 in un suo discorso a seguito del suggerimento di uno spettatore mai identificato.
+                    </p>
+                </article>
+                <article lang="da">
+                    <h1>Sort hul<span class="do-not-read"> (Danish)</span></h1>
+                    <img
+                        alt="Et simuleret billede af et sort hul, set på en afstand af 600 km med Mælkevejen i baggrunden."
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/300px-Black_Hole_Milkyway.jpg"
+                    />
+                    <p>
+                        Et sort hul er en samling af masse så stor/tæt, at end ikke elektromagnetiske bølger (f.eks.
+                        radiobølger og lys) kan udsendes fra dens "overflade".[1] Et massivt sort hul træffes ofte i centrum
+                        af en galakse, og de bliver i dag af mange forskere anset for at spille en vigtig rolle i
+                        galaksedannelse. Teoretiske overvejelser antyder at der er fra 100 millioner til 1 milliard sorte
+                        huller i vores Mælkevej, men indtil begyndelsen af 2017 var der kun fundet omkring 60.
+                    </p>
 
-                <p>
-                    De tels objets ne peuvent ni émettre, ni diffuser la lumière et sont donc noirs, ce qui en
-                    astronomie revient à dire qu'ils sont optiquement invisibles. Toutefois, plusieurs techniques
-                    d’observation indirecte dans différentes longueurs d'onde ont été mises au point et permettent
-                    d’étudier de nombreux phénomènes qu’ils induisent. En particulier, la matière happée par un trou
-                    noir est chauffée à des températures très élevées et émet une quantité importante de rayons X, avant
-                    d’être « absorbée ».
-                </p>
+                    <p>
+                        I 2008 blev det sandsynliggjort, at der er et stort sort hul i centrum af vores galakse Mælkevejen
+                        benævnt Sagittarius A*. Ifølge ESOs beregninger skulle det sorte hul have en masse på ca. 4.000.000
+                        gange vores egen sol. [4] [5] Et sort hul med en meget lysende skive af gas omkring sig kaldes en
+                        kvasar, en ældgammel form for galakse. Denne udsender en stærk stråling af både radiobølger, lys og
+                        røntgenstråling, hvilket gør den til et meget lysstærkt objekt.
+                    </p>
 
-                <p>
-                    Envisagée dès le XVIIIe siècle, dans le cadre de la mécanique classique, leur existence — prédite
-                    par la relativité générale — est une certitude pour la quasi-totalité des astrophysiciens et des
-                    physiciens théoriciens. Un trou noir n'étant détectable que par les effets de son champ
-                    gravitationnel, une observation quasi-directe de trous noirs a pu être établie en février 2016 par
-                    le biais de la première observation directe des ondes gravitationnelles, GW150914. Le 10 avril 2019,
-                    les premières images d'un trou noir sont publiées, celle de M87*, trou noir supermassif situé au
-                    cœur de la galaxie M87. Ces différentes observations apportent ainsi la preuve scientifique de leur
-                    existence.
-                </p>
+                    <p>
+                        I 2020 blev det sandsynliggjort af astronomer på European Southern Observatory, at nærmeste opdagede
+                        sorte hul (del af HR 6819) er en del af Kikkerten, kun er 1000 lysår fra Jorden, Solsystemet.
+                    </p>
 
-                <p>
-                    Dans le cadre de la relativité générale, un trou noir est défini comme une singularité
-                    gravitationnelle occultée par un horizon absolu appelé horizon des évènements. Selon la physique
-                    quantique, un trou noir est susceptible de s'évaporer par l'émission d'un rayonnement de corps noir
-                    appelé rayonnement de Hawking.
-                </p>
+                    <p>
+                        Det sorte hul har principielt ikke nogen udstrækning, idet alt her er samlet i et enkelt punkt. Men
+                        det sorte huls størrelse/masse kan betegnes ved dets begivenhedshorisont, som udgør grænsen for,
+                        hvornår en begivenhed kan undslippe det sorte hul. Således er det sorte hul karakteriseret ved, at
+                        ekstrem meget masse er presset sammen på meget lidt plads (eller ingen plads). Hvis Jorden blev
+                        presset sammen til en tæthed som et sort hul, ville den fylde som en lille nød eller sukkerknald.
+                        Det indtil videre største observerede sorte hul har en masse, som er cirka 12 milliarder gange
+                        større end Solens,[10]hvilket betyder at deres begivenhedshorisont kan være op til en promille af et
+                        lysår.
+                    </p>
 
-                <p>Un trou noir ne doit pas être confondu avec un trou blanc ni avec un trou de ver.</p>
-            </article>
-            <article lang="nb" tabindex="0">
-                <h1>Sort hull<span class="do-not-read"> (Norsk bokmål)</span></h1>
-                <img
-                    alt="Simulering av hvordan et sort hull foran Melkeveien skal kunne se ut. Det sorte hullet har 10 solmasser, og ses her fra en avstand på 600 km. For å opprettholde denne avstanden kreves det en akselerasjon på omkring 400 millioner G."
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/1920px-Black_Hole_Milkyway.jpg"
-                />
-                <p>
-                    Et sort hull, eller svart hull, er et område av tidrommet hvor gravitasjonen er så sterk at
-                    ingenting – ikke en gang elementærpartikler eller elektromagnetisk stråling – kan unnslippe.
-                    Yttergrensen til dette området kalles hendelseshorisonten og definerer størrelsen til det sorte
-                    hullet. Innenfor denne horisonten vil all materie og stråling bevege seg mot en singularitet hvor
-                    fysikkens lover er brutt sammen.
-                </p>
+                    <p>
+                        Indenfor det sorte huls begivenhedshorisont, falder rumtiden hurtigere indad end "lyset" - eller
+                        rettere lysets hastighed i vakuum
+                    </p>
+                </article>
+                <article lang="nb" tabindex="0">
+                    <h1>Sort hull<span class="do-not-read"> (Norsk bokmål)</span></h1>
+                    <img
+                        alt="Simulering av hvordan et sort hull foran Melkeveien skal kunne se ut. Det sorte hullet har 10 solmasser, og ses her fra en avstand på 600 km. For å opprettholde denne avstanden kreves det en akselerasjon på omkring 400 millioner G."
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/1920px-Black_Hole_Milkyway.jpg"
+                    />
+                    <p>
+                        Et sort hull, eller svart hull, er et område av tidrommet hvor gravitasjonen er så sterk at
+                        ingenting – ikke en gang elementærpartikler eller elektromagnetisk stråling – kan unnslippe.
+                        Yttergrensen til dette området kalles hendelseshorisonten og definerer størrelsen til det sorte
+                        hullet. Innenfor denne horisonten vil all materie og stråling bevege seg mot en singularitet hvor
+                        fysikkens lover er brutt sammen.
+                    </p>
 
-                <p>
-                    Teorien om generell relativitet forutser at et objekt med tilstrekkelig stor masse som kollapser
-                    (komprimeres) til en størrelse mindre enn sin egen Schwarzschild-radius, vil ha en
-                    unnslipningshastighet som er høyere enn lysets hastighet. Siden 1967 har slike objekter blitt kalt
-                    «sorte hull», ettersom ikke noe lys fra innenfor hendelseshorisonten slipper ut.
-                </p>
+                    <p>
+                        Teorien om generell relativitet forutser at et objekt med tilstrekkelig stor masse som kollapser
+                        (komprimeres) til en størrelse mindre enn sin egen Schwarzschild-radius, vil ha en
+                        unnslipningshastighet som er høyere enn lysets hastighet. Siden 1967 har slike objekter blitt kalt
+                        «sorte hull», ettersom ikke noe lys fra innenfor hendelseshorisonten slipper ut.
+                    </p>
 
-                <p>
-                    I 1974 viste Stephen Hawking ved bruk av kvantefeltteori at et sort hull er et sort legeme. Det vil
-                    derfor avgi stråling ifølge Stefan-Boltzmanns lov med en temperatur som Hawking fant å være omvendt
-                    proporsjonal med massen til det sorte hullet. Dette gjør det vanskelig å observere denne strålingen
-                    fra sorte hull med masser av samme størrelsesorden som solen eller enda større.
-                </p>
+                    <p>
+                        I 1974 viste Stephen Hawking ved bruk av kvantefeltteori at et sort hull er et sort legeme. Det vil
+                        derfor avgi stråling ifølge Stefan-Boltzmanns lov med en temperatur som Hawking fant å være omvendt
+                        proporsjonal med massen til det sorte hullet. Dette gjør det vanskelig å observere denne strålingen
+                        fra sorte hull med masser av samme størrelsesorden som solen eller enda større.
+                    </p>
 
-                <p>
-                    Objekter med en gravitasjon så stor at ikke en gang lyset kan unnslippe, ble først overveid som en
-                    mulighet på 1700-tallet av John Michell og Pierre-Simon Laplace. De første moderne forutsigelser av
-                    et sort hull i generell relativitetsteori ble gjort av Karl Schwarzschild i 1916 som en ren
-                    teoretisk konstruksjon, selv om det gikk ytterligere fire tiår før hypotesen ble akseptert. Etter at
-                    det lenge ble betraktet som en matematisk merkverdighet, var det ikke før på 1960-tallet at
-                    teoretisk arbeid viste at sorte hull var en logisk følge av teorien om generell relativitet.
-                    Oppdagelsen av nøytronstjerner utløste interesse for kollapsede objekter med stor masse som en mulig
-                    astrofysisk virkelighet.
-                </p>
+                    <p>
+                        Objekter med en gravitasjon så stor at ikke en gang lyset kan unnslippe, ble først overveid som en
+                        mulighet på 1700-tallet av John Michell og Pierre-Simon Laplace. De første moderne forutsigelser av
+                        et sort hull i generell relativitetsteori ble gjort av Karl Schwarzschild i 1916 som en ren
+                        teoretisk konstruksjon, selv om det gikk ytterligere fire tiår før hypotesen ble akseptert. Etter at
+                        det lenge ble betraktet som en matematisk merkverdighet, var det ikke før på 1960-tallet at
+                        teoretisk arbeid viste at sorte hull var en logisk følge av teorien om generell relativitet.
+                        Oppdagelsen av nøytronstjerner utløste interesse for kollapsede objekter med stor masse som en mulig
+                        astrofysisk virkelighet.
+                    </p>
 
-                <p>
-                    Siden sorte hull er veldig små i utstrekning i astronomisk sammenheng, og ikke kan observeres
-                    direkte, har påvising av disse objektene basert seg på gravitasjonseffekten de har; enten på
-                    objekter i nærheten, eller på lys som passerer nær det sorte hullet (gravitasjonslinser). Tidlig på
-                    2000-tallet kunne astrofysikere ved hjelp av indirekte observasjoner fastslå at det befinner seg et
-                    supermassivt sort hull i Melkeveiens sentrum (Sagittarius A*) med en masse anslått til 4,6 millioner
-                    ganger solens.
-                </p>
+                    <p>
+                        Siden sorte hull er veldig små i utstrekning i astronomisk sammenheng, og ikke kan observeres
+                        direkte, har påvising av disse objektene basert seg på gravitasjonseffekten de har; enten på
+                        objekter i nærheten, eller på lys som passerer nær det sorte hullet (gravitasjonslinser). Tidlig på
+                        2000-tallet kunne astrofysikere ved hjelp av indirekte observasjoner fastslå at det befinner seg et
+                        supermassivt sort hull i Melkeveiens sentrum (Sagittarius A*) med en masse anslått til 4,6 millioner
+                        ganger solens.
+                    </p>
 
-                <p>
-                    Det første bildet av akkresjonsskiven omkring et sort hull ble offentliggjort i fagtidsskriftet
-                    Astrophysical Journal Letters 10. april 2019. I mars ble åtte radioteleskoper på forskjellige steder
-                    på jorden, som er knyttet sammen til Event Horizon Telescope (EHT), rettet mot senteret av Messier
-                    87-galaksen, 55 millioner lysår fra jorden. Det sorte hullet er tre millioner ganger større enn
-                    jorden og har en masse på seks milliarder ganger solens.
-                </p>
-            </article>
-            <article lang="nn_NO" tabindex="0">
-                <h1>Svart hòl<span class="do-not-read"> (Norsk nynorsk)</span></h1>
-                <img
-                    alt="Simulering av hvordan et sort hull foran Melkeveien skal kunne se ut. Det sorte hullet har 10 solmasser, og ses her fra en avstand på 600 km. For å opprettholde denne avstanden kreves det en akselerasjon på omkring 400 millioner G."
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/1920px-Black_Hole_Milkyway.jpg"
-                />
-                <p>
-                    Svarte hòl er nemninga på kosmiske objekt (massive klumpar, rester av stjerner) med ovstor tettleik.
-                </p>
+                    <p>
+                        Det første bildet av akkresjonsskiven omkring et sort hull ble offentliggjort i fagtidsskriftet
+                        Astrophysical Journal Letters 10. april 2019. I mars ble åtte radioteleskoper på forskjellige steder
+                        på jorden, som er knyttet sammen til Event Horizon Telescope (EHT), rettet mot senteret av Messier
+                        87-galaksen, 55 millioner lysår fra jorden. Det sorte hullet er tre millioner ganger større enn
+                        jorden og har en masse på seks milliarder ganger solens.
+                    </p>
+                </article>
+                <article lang="nn-NO" tabindex="0">
+                    <h1>Svart hòl<span class="do-not-read"> (Norsk nynorsk)</span></h1>
+                    <img
+                        alt="Simulering av hvordan et sort hull foran Melkeveien skal kunne se ut. Det sorte hullet har 10 solmasser, og ses her fra en avstand på 600 km. For å opprettholde denne avstanden kreves det en akselerasjon på omkring 400 millioner G."
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Black_Hole_Milkyway.jpg/1920px-Black_Hole_Milkyway.jpg"
+                    />
+                    <p>
+                        Svarte hòl er nemninga på kosmiske objekt (massive klumpar, rester av stjerner) med ovstor tettleik.
+                    </p>
 
-                <p>
-                    Dei vert danna når massive stjerner døyr i ein super- eller hypernovaeksplosjon og restmassen er
-                    meir enn 2-2,5 solmassar. Då er tyngdekreftene kraftigare enn både elektron- og
-                    nøytrondegeneringstrykket og objektet bryt saman til eit svart hòl. Dei er som regel nokre få
-                    kilometer i diameter, men har så stor gravitasjon at ingen ting, ikkje ein gong lys slepp unna.
-                    Derfor kan ein ikkje sjå dei, noko som har gitt dei namnet «svarte hòl». Sjølve den massive klumpen
-                    er mindre enn eit atom, resten av hòlet består av gravitasjonsfeltet som er så sterkt at lyset ikkje
-                    slepp unna.
-                </p>
+                    <p>
+                        Dei vert danna når massive stjerner døyr i ein super- eller hypernovaeksplosjon og restmassen er
+                        meir enn 2-2,5 solmassar. Då er tyngdekreftene kraftigare enn både elektron- og
+                        nøytrondegeneringstrykket og objektet bryt saman til eit svart hòl. Dei er som regel nokre få
+                        kilometer i diameter, men har så stor gravitasjon at ingen ting, ikkje ein gong lys slepp unna.
+                        Derfor kan ein ikkje sjå dei, noko som har gitt dei namnet «svarte hòl». Sjølve den massive klumpen
+                        er mindre enn eit atom, resten av hòlet består av gravitasjonsfeltet som er så sterkt at lyset ikkje
+                        slepp unna.
+                    </p>
 
-                <p>
-                    Svarte hòl kan observerast når eit objekt, som til dømes ei stjerne, kjem for nære tyngdefeltet til
-                    hòlet. Hòlet vil byrje å trekkje til seg gass og støv frå objekta. Før denne materien blir sogen
-                    inn, vert han komprimert og såleis varma opp til ekstreme temperaturar. Når materie har så høg
-                    temperatur sender han ut røntgenstråling, og denne kan registrerast med røntgenteleskop. Svarte hòl
-                    kan òg observerast ved at dei bøyer lys som passerer.
-                </p>
+                    <p>
+                        Svarte hòl kan observerast når eit objekt, som til dømes ei stjerne, kjem for nære tyngdefeltet til
+                        hòlet. Hòlet vil byrje å trekkje til seg gass og støv frå objekta. Før denne materien blir sogen
+                        inn, vert han komprimert og såleis varma opp til ekstreme temperaturar. Når materie har så høg
+                        temperatur sender han ut røntgenstråling, og denne kan registrerast med røntgenteleskop. Svarte hòl
+                        kan òg observerast ved at dei bøyer lys som passerer.
+                    </p>
 
-                <p>
-                    Stephen Hawking utarbeidde i 1974 ut ein teori om at svarte hòl faktisk kan fordampe. Etter
-                    Einsteins likning e = m c 2, er energi og masse to sider av same saka. Etter kvantemekanikken
-                    oppstår det par med partiklar og antipartiklar frå ingenting, og desse utslettar kvarandre etter eit
-                    kort bel. Rundt hendingsranda til eit svart hòl kan ein av partikklane komme innanfor randa medan
-                    den andre kjem seg bort. Såleis misser hòlet litt masse, det «fordampar». Når tilstrekkeleg mange
-                    partiklar slepp unna over mange år, vil det svarte hòlet ha dunsta bort.
-                </p>
-            </article>
-            <article lang="it" tabindex="0">
-                <h1>Buco nero<span class="do-not-read"> (Italiano)</span></h1>
-                <img
-                    alt="La prima prova visiva diretta della presenza di un buco nero al centro della nostra Galassia, la Via Lattea"
-                    src="//upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
-                />
-                <p>
-                    In astrofisica, un buco nero è un corpo celeste con un campo gravitazionale così intenso (ovvero,
-                    una regione dello spaziotempo con una curvatura talmente grande) che dal suo interno non può uscire
-                    nulla, nemmeno la luce[3] essendo la velocità di fuga superiore a c.
-                </p>
-                <p>
-                    Il buco nero è il risultato di implosioni di masse sufficientemente elevate. La gravità domina su
-                    qualsiasi altra forza, determinando un collasso gravitazionale che tende a concentrare lo
-                    spaziotempo in un punto[4] al centro della regione, dove è teorizzato uno stato della materia di
-                    curvatura tendente a infinito e volume tendente a zero chiamato singolarità, con caratteristiche
-                    sconosciute ed estranee alle leggi della relatività generale. Il limite del buco nero è definito
-                    orizzonte degli eventi, regione che ne delimita in modo peculiare i confini osservabili.
-                </p>
-                <p>
-                    Per le suddette proprietà, il buco nero non è osservabile direttamente. La sua presenza si rivela
-                    solo indirettamente mediante i suoi effetti sullo spazio circostante: le interazioni gravitazionali
-                    con altri corpi celesti e le loro emissioni, le irradiazioni principalmente elettromagnetiche della
-                    materia catturata dal suo campo di forza.
-                </p>
-                <p>
-                    Nel corso dei decenni successivi alla pubblicazione della relatività generale, base teorica della
-                    loro esistenza, vennero raccolte numerose osservazioni interpretabili, pur non sempre univocamente,
-                    come prove della presenza di buchi neri, specialmente in alcune galassie attive e sistemi stellari
-                    di binarie X.[5] L'esistenza di tali oggetti è oggi definitivamente dimostrata e via via ne vengono
-                    individuati di nuovi con massa molto variabile, da valori di circa 5 fino a miliardi di masse
-                    solari.
-                </p>
-                <p>
-                    Il termine "buco nero" fu coniato dal fisico John Archibald Wheeler, che lo utilizzò a partire dal
-                    1967 in un suo discorso a seguito del suggerimento di uno spettatore mai identificato.
-                </p>
-            </article>
-            <article lang="de" tabindex="0">
-                <h1>Schwarzes Loch<span class="do-not-read"> (Deutsch)</span></h1>
-                <p>
-                    Ein Schwarzes Loch ist ein Objekt, dessen Masse auf ein extrem kleines Volumen konzentriert ist und
-                    infolge dieser Kompaktheit in seiner unmittelbaren Umgebung eine so starke Gravitation erzeugt, dass
-                    nicht einmal das Licht diesen Bereich verlassen oder durchlaufen kann.
-                </p>
-            </article>
-            <article lang="nl" tabindex="0">
-                <h1>Zwart gat<span class="do-not-read"> (Nederlands)</span></h1>
-                <p>
-                    Volgens de algemene relativiteitstheorie is een zwart gat een gebied in de astronomische ruimte
-                    waaruit niets - geen deeltjes en zelfs geen licht - kan ontsnappen.
-                </p>
-            </article>
-            <article lang="es" tabindex="0">
-                <h1>Agujero negro<span class="do-not-read"> (Español)</span></h1>
-                <p>
-                    Un agujero negro es una región finita del espacio cuyo interior posee una concentración de masa lo
-                    suficientemente elevada como para generar un campo gravitatorio tal que, salvo por un determinado
-                    tipo de procesos cuánticos, ninguna partícula ni radiación — ni siquiera la luz — pueden escapar de
-                    él.
-                </p>
-            </article>
-            <article lang="ca-ES" tabindex="0">
-                <h1>Barcelona<span class="do-not-read"> (Català)</span></h1>
-                <p>
-                    Barcelona és una ciutat i metròpoli a la costa mediterrània de la península Ibèrica. És la capital de
-                    Catalunya, així com de la comarca del Barcelonès i de la província de Barcelona, i la segona ciutat
-                    en població i pes econòmic de la península Ibèrica, després de Madrid.
-                </p>
-            </article>
-            <article lang="val-ES" tabindex="0">
-                <h1>La nina de cel·luloide<span class="do-not-read"> (Valencià)</span></h1>
-                <p>
-                    M'han dit que el doctor se n'ha hagut d'anar, que han fet que seguís la ruta amb tots els soldats. Ara
-                    que m'hi havia fet amiga, ves. Des que va enguixar la meva nina que jo i el doctor érem la mar d'amics,
-                    perquè dia per altre venia a casa i em preguntava què feia la nina i li mirava el guix i li preguntava si li
-                    picava, i la nina no deia res, és clar, perquè és una nina, però jo sí que deia coses, i feia veu de nina i li
-                    deia al doctor que quan em traurien el guix i coses així.
-                </p>
-            </article>
-            <article lang="pt" tabindex="0">
-                <h1>Buraco negro<span class="do-not-read"> (Portugues)</span></h1>
-                <p>
-                    Buraco negro é uma região do espaço-tempo em que o campo gravitacional é tão intenso que nada —
-                    nenhuma partícula ou radiação eletromagnética como a luz — pode escapar.
-                </p>
-            </article>
-            <article lang="pl-pl" tabindex="0">
-                <h1>Czarna dziura<span class="do-not-read"> (Polski)</span></h1>
-                <p>
-                    Czarna dziura - obszar czasoprzestrzeni, którego z uwagi na wpływ grawitacji, nic - łącznie ze
-                    światłem i informacją - nie może opuścić.
-                </p>
-            </article>
-            <article lang="sv-SE" tabindex="0">
-                <h1>Svart hål<span class="do-not-read"> (Svenska)</span></h1>
-                <p>
-                    Ett svart hål är, enligt den allmänna relativitetsteorin, en koncentration av massa med ett så
-                    starkt gravitationsfält att ingenting, inte ens ljus, kan övervinna kroppens gravitation.
-                </p>
-            </article>
-            <article lang="lt-LT" tabindex="0">
-                <h1>Juodoji bedugnė <span class="do-not-read">(Lietuva)</span></h1>
-                <p>
-                    Juodoji bedugnė arba juodoji skylė – kosminis darinys, kurio paviršiuje, vadinamame įvykių horizontu, traukos jėga stipresnė už kritinę reikšmę, kuriai esant, šviesa dar gali palikti objekto paviršių. Gravitacinės traukos jėga tos pačios masės objektui stiprėja, mažėjant jo spinduliui.
-                </p>
-                <p>
-                    Juodųjų bedugnių susidarymą ir savybes aiškina bendroji reliatyvumo teorija.
-                </p>
-            </article>
-            <article lang="ja" tabindex="0">
-                <h1>ブラックホール<span class="do-not-read"> (日本語)</span></h1>
-                <p>
-                    ブラックホール
-                    は、宇宙空間に存在する天体のうち、極めて高密度で、極端に重力が強いために物質だけでなく光さえ脱出することでがきない天体である。
-                </p>
-            </article>
-            <article lang="ar" dir="rtl" tabindex="0">
-                <h1>ثقب أسود</h1>
-                <p>
-                    الثقب الأسود هو منطقة موجودة في الزمكان (الفضاء بأبعاده الأربعة، وهي الأبعاد الثلاثة بالإضافة إلى
-                    الزمن) تتميز بجاذبية قوية جداً بحيث لا يمكن لأي شيء - ولا حتى الجسيمات أو موجات الإشعاع
-                    الكهرومغناطيسي مثل الضوء - الإفلات منها. تتنبأ النظرية النسبية العامة بأنه يمكن لكتلة فائقة الضخامة
-                    أن تنضغط بقدر معين بحيث تشوه الزمكان وتشكيل ثقب أسود. يُطلق على حدود المنطقة التي لا يُمكن الهروب
-                    منها اسم أفق الحدث.
-                </p>
-            </article>
-            <article lang="en-GB-math" tabindex="0">
-                <h1>MathJax <span class="do-not-read">(English)</span></h1>
-                <p>
-                    When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
-                    $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
-                </p>
-                <p lang="it">Guarda la formula. <span lang="fr-fr">Regardez le formule.</span></p>
-            </article>
+                    <p>
+                        Stephen Hawking utarbeidde i 1974 ut ein teori om at svarte hòl faktisk kan fordampe. Etter
+                        Einsteins likning e = m c 2, er energi og masse to sider av same saka. Etter kvantemekanikken
+                        oppstår det par med partiklar og antipartiklar frå ingenting, og desse utslettar kvarandre etter eit
+                        kort bel. Rundt hendingsranda til eit svart hòl kan ein av partikklane komme innanfor randa medan
+                        den andre kjem seg bort. Såleis misser hòlet litt masse, det «fordampar». Når tilstrekkeleg mange
+                        partiklar slepp unna over mange år, vil det svarte hòlet ha dunsta bort.
+                    </p>
+                </article>
+                <article lang="sv-SE" tabindex="0">
+                    <h1>Svart hål<span class="do-not-read"> (Svenska)</span></h1>
+                    <p>
+                        Ett svart hål är, enligt den allmänna relativitetsteorin, en koncentration av massa med ett så
+                        starkt gravitationsfält att ingenting, inte ens ljus, kan övervinna kroppens gravitation.
+                    </p>
+                </article>
+                <article lang="de" tabindex="0">
+                    <h1>Schwarzes Loch<span class="do-not-read"> (Deutsch)</span></h1>
+                    <p>
+                        Ein Schwarzes Loch ist ein Objekt, dessen Masse auf ein extrem kleines Volumen konzentriert ist und
+                        infolge dieser Kompaktheit in seiner unmittelbaren Umgebung eine so starke Gravitation erzeugt, dass
+                        nicht einmal das Licht diesen Bereich verlassen oder durchlaufen kann.
+                    </p>
+                </article>
+                <article lang="nl" tabindex="0">
+                    <h1>Zwart gat<span class="do-not-read"> (Nederlands)</span></h1>
+                    <p>
+                        Volgens de algemene relativiteitstheorie is een zwart gat een gebied in de astronomische ruimte
+                        waaruit niets - geen deeltjes en zelfs geen licht - kan ontsnappen.
+                    </p>
+                </article>
+            </section>
+            <section>
+                <article lang="es" tabindex="0">
+                    <h1>Español (sin región)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="es-ES" tabindex="0">
+                    <h1>Español (España)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="es-ES-xx" tabindex="0">
+                    <h1>Español (alternativa)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="es-CO" tabindex="0">
+                    <h1>Español (Colombia)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="es-MX" tabindex="0">
+                    <h1>Español (Mexico)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="es-US" tabindex="0">
+                    <h1>Español (Estados Unidos)</h1>
+                    <p>Por favor espere mientras la exportación de libros está en curso. Presiona Enter o espacio para activar la lectura continua.</p>
+                </article>
+                <article lang="ca-ES" tabindex="0">
+                    <h1>Barcelona<span class="do-not-read"> (Català)</span></h1>
+                    <p>
+                        Barcelona és una ciutat i metròpoli a la costa mediterrània de la península Ibèrica. És la capital de
+                        Catalunya, així com de la comarca del Barcelonès i de la província de Barcelona, i la segona ciutat
+                        en població i pes econòmic de la península Ibèrica, després de Madrid.
+                    </p>
+                </article>
+                <article lang="val-ES" tabindex="0">
+                    <h1>La nina de cel·luloide<span class="do-not-read"> (Valencià)</span></h1>
+                    <p>
+                        M'han dit que el doctor se n'ha hagut d'anar, que han fet que seguís la ruta amb tots els soldats. Ara
+                        que m'hi havia fet amiga, ves. Des que va enguixar la meva nina que jo i el doctor érem la mar d'amics,
+                        perquè dia per altre venia a casa i em preguntava què feia la nina i li mirava el guix i li preguntava si li
+                        picava, i la nina no deia res, és clar, perquè és una nina, però jo sí que deia coses, i feia veu de nina i li
+                        deia al doctor que quan em traurien el guix i coses així.
+                    </p>
+                </article>
+                <article lang="gl-ES" tabindex="0">
+                    <h1>Kiwi<span class="do-not-read"> (Galego)</span></h1>
+                    <p>
+                        O kiwi é a froita da planta do mesmo nome (Actinidia deliciosa) que medra en climas temperados. Debe o seu nome a unha remota similitude de aspecto entre o froito de orixe chinesa e a ave neozelandesa chamada kiwi. O froito cuberto de micropelos pode evocar a curiosa e típica plumaxe desta ave.
+                    </p>
+                </article>
+            </section>
+            <section>
+                <article lang="pt" tabindex="0">
+                    <h1>Buraco negro<span class="do-not-read"> (Portugues)</span></h1>
+                    <p>
+                        Buraco negro é uma região do espaço-tempo em que o campo gravitacional é tão intenso que nada —
+                        nenhuma partícula ou radiação eletromagnética como a luz — pode escapar.
+                    </p>
+                </article>
+                <article lang="pl-pl" tabindex="0">
+                    <h1>Czarna dziura<span class="do-not-read"> (Polski)</span></h1>
+                    <p>
+                        Czarna dziura - obszar czasoprzestrzeni, którego z uwagi na wpływ grawitacji, nic - łącznie ze
+                        światłem i informacją - nie może opuścić.
+                    </p>
+                </article>
+                <article lang="lt-LT" tabindex="0">
+                    <h1><span data-pron="juodoji skylė">Juodoji bedugnėspan</span> <span class="do-not-read">(Lietuva)</span></h1>
+                    <p>Juodoji<sup>1</sup> bedugnė arba.</p>
+                    <p>Juodoji I, Juodoji II, Juodoji III, Juodoji IV.</p>
+                    <p>Juodoji 8.</p>
+                    <p>
+                        Juodoji bedugnė arba juodoji skylė – kosminis darinys, kurio paviršiuje, vadinamame įvykių horizontu, traukos jėga stipresnė už kritinę reikšmę, kuriai esant, šviesa dar gali palikti objekto paviršių. Gravitacinės traukos jėga tos pačios masės objektui stiprėja, mažėjant jo spinduliui.
+                    </p>
+                    <p>
+                        Juodųjų bedugnių susidarymą ir savybes aiškina bendroji reliatyvumo teorija.
+                    </p>
+                </article>
+                <article lang="cy-GB" tabindex="0">
+                    <h1>Twll du <span class="do-not-read">(Cymraeg)</span></h1>
+                    <img
+                        alt="M87* by Event Horizon"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/Black_hole_-_Messier_87_crop_max_res.jpg/220px-Black_hole_-_Messier_87_crop_max_res.jpg"
+                    />
+                    <p>
+                        Yn ôl damcaniaeth perthnasedd cyffredinol Einstein rhan o'r gofod yw twll du lle na all unrhyw beth (gan gynnwys golau) ddianc, o herwydd y duwch hwn y cafodd ei enw. Yr hyn sy'n atynnu popeth tuag ato yw disgyrchiant cryf, a phan fo rhywbeth yn cael ei sugno i'r twll, ni all fyth ddod oddi yno. Ceir ymyl, neu ffin, i'r twll du, sef yr union bwynt o ble na ddaw dim yn ôl, a gelwir y ffin hwn yn "orwel y digwyddiad".
+                    </p>
+                </article>
+                <article lang="is" tabindex="0">
+                    <h1>Kíví (Íslenska)</h1>
+                    <img
+                        alt="mynd af kívíávöxtum"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg/250px-Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg"
+                    />
+                    <p>
+                        Kíví (eða kívíávöxtur eða loðber) er ber sem vex á kívífléttunni og skyldum klifurrunnum.
+                    </p>
+                    <p>
+                        Kíví rekja uppruna sinn til Kína en voru ekki ræktuð til matar þar. Kívírækt hófst á Nýja Sjálandi í byrjun tuttugustu aldar. Frá Nýja Sjálandi voru kívíin síðan flutt til vesturlanda á sjötta áratug. Algengasta ræktunarafbrigðið í dag er „Hayward“.
+                    </p>
+                    <p>
+                        Innflutningur kívíávaxta til Íslands hófst á 8. áratug 20. aldar.</p>
+                    </p>
+                </article>
+                <article lang="sk" tabindex="0">
+                    <h1>Kivi (Slovenčina)</h1>
+                    <img
+                        alt="obrázok kiwi ovocia"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg/250px-Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg"
+                    />
+                    <p>
+                        Kivi alebo kiwi je ovocie,[1] plod popínavých drevín rodu aktinídia, pochádzajúcich z Číny.
+                    </p>
+                    <p>
+                        Plod druhu aktinídia lahodná[2] (Actinidia deliciosa) obsahuje veľké množstvo vitamínu C,. Veľkosťou je podobný kuraciemu vajcu, šupka je hnedá a chlpatá, dužina zvyčajne zelená. Chuť je kyslá.
+                    </p>
+                </article>
+                <article lang="ro" tabindex="0">
+                    <h1>Kiwi (Română)</h1>
+                    <img
+                        alt="imagine cu un fruct de kiwi"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg/250px-Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg"
+                    />
+                    <p>
+                        Kiwi este fructul comestibil al plantelor Actinidia chinensis și Actinidia deliciosa din Asia. Denumirea chinezească este Yang Tao (mura sau strugurele gâștei). Cunoscut original sub denumirea de „agrișe chinezești”.
+                    </p>
+                    <p>
+                        Istoria "europeană" a fructului a început în Valea Ghang Kiang, din Sud-Estul Chinei, de unde în anul 1847 un membru al Societății Regale de Horticultură din Marea Britanie a trimis primele semințe în afara granițelor țării de origine.
+                    </p>
+                </article>
+                <article lang="zh" tabindex="0">
+                    <h1>奇異果</h1>
+                    <img
+                        alt="獼猴桃的形象"
+                        src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg/250px-Kiwi_%28Actinidia_chinensis%29_1_Luc_Viatour.jpg"
+                    />
+                    <p>
+                        奇異果，又稱獼猴桃、猕猴梨、藤梨、毛梨、羊桃、陽桃、几维果、木子、毛木果等，是獼猴桃屬多種木質攀緣植物的可食用漿果。最常見的獼猴桃品種（Hayward）是橢圓形，大小約為一顆大型雞蛋，長度為5-8厘米（2.0-3.1英寸），直徑為4.5-5.5厘米（1.8-2.2英寸）。
+                    </p>
+                </article>
+                <article lang="ja" tabindex="0">
+                    <h1>ブラックホール<span class="do-not-read"> (日本語)</span></h1>
+                    <p>
+                        ブラックホール
+                        は、宇宙空間に存在する天体のうち、極めて高密度で、極端に重力が強いために物質だけでなく光さえ脱出することでがきない天体である。
+                    </p>
+                </article>
+                <article lang="ar" dir="rtl" tabindex="0">
+                    <h1>ثقب أسود</h1>
+                    <p>
+                        الثقب الأسود هو منطقة موجودة في الزمكان (الفضاء بأبعاده الأربعة، وهي الأبعاد الثلاثة بالإضافة إلى
+                        الزمن) تتميز بجاذبية قوية جداً بحيث لا يمكن لأي شيء - ولا حتى الجسيمات أو موجات الإشعاع
+                        الكهرومغناطيسي مثل الضوء - الإفلات منها. تتنبأ النظرية النسبية العامة بأنه يمكن لكتلة فائقة الضخامة
+                        أن تنضغط بقدر معين بحيث تشوه الزمكان وتشكيل ثقب أسود. يُطلق على حدود المنطقة التي لا يُمكن الهروب
+                        منها اسم أفق الحدث.
+                    </p>
+                </article>
+                <article lang="en-GB-math" tabindex="0">
+                    <h1>MathJax <span class="do-not-read">(English)</span></h1>
+                    <p>
+                        When $a \ne 0$, there are two solutions to \(ax^2 + bx + c = 0\) and they are
+                        $$x = {-b \pm \sqrt{b^2-4ac} \over 2a}.$$
+                    </p>
+                    <p lang="it">Guarda la formula. <span lang="fr-fr">Regardez le formule.</span></p>
+                </article>
+            </section>
         </main>
     </body>
 </html>
