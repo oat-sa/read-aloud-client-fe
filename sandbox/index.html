@@ -28,33 +28,54 @@
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" async></script>
         <script type="module" src="bundle.js"></script>
         <style>
+            html, body {
+                margin: 0;
+                padding: 0;
+            }
             main {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+            section {
                 display: grid;
                 grid-template-columns: 1fr 1fr 1fr;
-                gap: 15px;
-                margin: 15px;
+                gap: 20px;
+                padding: 15px 15px 0;
+            }
+            section:nth-child(2) {
+                background-color: #ffd;
             }
             nav {
                 display: flex;
                 flex-flow: row nowrap;
-                margin: 15px;
+                padding: 15px;
+                background: #E6F3FF;
+                border-bottom: 2px solid #005299;
+            }
+            nav fieldset:first-child {
+                flex-grow: 1;
+            }
+            nav textarea {
+                white-space: pre;
+                width: 100%;
             }
             article {
                 max-height: 220px;
                 overflow: hidden;
                 overflow-y: auto;
                 border: solid 1px grey;
-                padding: 5px;
+                padding: 8px;
             }
             article img {
                 float: left;
                 margin: 0 5px 5px 0;
                 max-width: 150px;
             }
-            [name='preferences'] label {
+            [name='preferences'] > label {
                 font-weight: bold;
             }
-            [name='preferences'] label + div {
+            [name='preferences'] > label + div {
                 padding: 0 0 5px 10px;
             }
             main [lang]::before {
