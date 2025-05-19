@@ -106,6 +106,10 @@ dist
 #eslint reports
 eslint_report.json
 
+# IDE files
+.vscode/
+.idea/
+
 sandbox/bundle.js
 sandbox/bundle.js.map
 
