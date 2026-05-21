@@ -162,13 +162,13 @@ export default function getReadAloudClient(providerId, config = {}) {
                         Object.assign({}, preferences, {
                             speed: Object.values(speeds).includes(preferences.speed)
                                 ? preferences.speed
-                                : speeds.normal,
+                                : void 0,
                             pitch: Object.values(pitches).includes(preferences.pitch)
                                 ? preferences.pitch
-                                : pitches.medium,
+                                : void 0,
                             volume: Object.values(volumes).includes(preferences.volume)
                                 ? preferences.volume
-                                : volumes.medium
+                                : void 0
                         })
                     );
                 }
