@@ -66,10 +66,11 @@ export default function getReadAloudClient(providerId, config = {}) {
             /**
              * Start playing from that element
              * @param {HTMLElement} element
+             * @param {Object} [options]
              * @returns {*}
              */
-            play(element) {
-                return provider.play(element);
+            play(element, options) {
+                return provider.play(element, options);
             },
 
             /**
