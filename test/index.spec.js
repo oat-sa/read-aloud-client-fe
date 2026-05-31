@@ -113,7 +113,7 @@ describe('get read aloud client', () => {
             expect(getSupport).toHaveBeenCalled();
             expect(setPreferences).toHaveBeenCalled();
             expect(ignoreElements).toHaveBeenNthCalledWith(1, '.selector');
-            expect(play).toHaveBeenNthCalledWith(1, element);
+            expect(play).toHaveBeenNthCalledWith(1, element, void 0);
             expect(playSelection).toHaveBeenCalledTimes(1);
             expect(stop).toHaveBeenCalledTimes(2);
             expect(isReading).toHaveBeenCalledTimes(1);
