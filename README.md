@@ -1,8 +1,8 @@
 # Read Aloud Client
 
-Multi-vendor Text-To-Speech client
+Multi-vendor Text-To-Speech client for [TAO](https://www.taotesting.com/).
 
-[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml)
+[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continuous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continuous-integration.yml)
 
 ## Installation
 
@@ -13,7 +13,7 @@ npm i @oat-sa/read-aloud-client
 ## Usage
 
 ```js
-import getReadAloudClient from '@oat-sa/read-alound-client';
+import getReadAloudClient from '@oat-sa/read-aloud-client';
 
 getReadAloudClient('native', {})
     .then(client => {
