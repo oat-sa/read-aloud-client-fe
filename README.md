@@ -1,21 +1,19 @@
 # Read Aloud Client
 
-Multi-vendor Text-To-Speech client
+Multi-vendor Text-To-Speech client for [TAO](https://www.taotesting.com/).
 
-[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continous-integration.yml)
+[![GPLv2 License](https://img.shields.io/badge/License-GPL%20v2-yellow.svg)](./LICENSE) - [![Continuous integration](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/oat-sa/read-aloud-client-fe/actions/workflows/continuous-integration.yml)
 
 ## Installation
 
-You need to have access to the OAT private npm organization.
-
 ```bash
-npm i @oat-sa-private/read-aloud-client
+npm i @oat-sa/read-aloud-client
 ```
 
 ## Usage
 
 ```js
-import getReadAloudClient from '@oat-sa-private/read-alound-client';
+import getReadAloudClient from '@oat-sa/read-aloud-client';
 
 getReadAloudClient('native', {})
     .then(client => {
@@ -163,6 +161,6 @@ npx jest --watch
 
 ## License
 
-Copyright (c) 2021-2025 Open Assessment Technologies SA
+Copyright (c) 2021-2026 Open Assessment Technologies SA
 
 Licensed under the terms of the [GNU GPL v2](./LICENSE)
