@@ -6,16 +6,14 @@ Multi-vendor Text-To-Speech client
 
 ## Installation
 
-You need to have access to the OAT private npm organization.
-
 ```bash
-npm i @oat-sa-private/read-aloud-client
+npm i @oat-sa/read-aloud-client
 ```
 
 ## Usage
 
 ```js
-import getReadAloudClient from '@oat-sa-private/read-alound-client';
+import getReadAloudClient from '@oat-sa/read-alound-client';
 
 getReadAloudClient('native', {})
     .then(client => {
@@ -163,6 +161,6 @@ npx jest --watch
 
 ## License
 
-Copyright (c) 2021-2025 Open Assessment Technologies SA
+Copyright (c) 2021-2026 Open Assessment Technologies SA
 
 Licensed under the terms of the [GNU GPL v2](./LICENSE)

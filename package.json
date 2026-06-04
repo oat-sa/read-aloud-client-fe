@@ -1,5 +1,5 @@
 {
-    "name": "@oat-sa-private/read-aloud-client",
+    "name": "@oat-sa/read-aloud-client",
     "version": "0.11.0",
     "displayName": "Read aloud client",
     "description": "Vendor agnostic text to speech client",
@@ -25,7 +25,7 @@
         "!**/test"
     ],
     "publishConfig": {
-        "access": "restricted"
+        "access": "public"
     },
     "repository": {
         "type": "git",
