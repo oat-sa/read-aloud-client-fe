@@ -5,13 +5,17 @@ name: Continuous integration
 
 on:
   pull_request:
-    branches: [ develop ]
+    branches:
+      - develop
+      - release-*
+      - feature/*
+      - fix/*
 
 jobs:
   code-check:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v6
       with:
         token: ${{ secrets.GH_TOKEN }}
     - run: git fetch --tags --unshallow
@@ -20,10 +24,11 @@ jobs:
       uses: oat-sa/conventional-commit-action@v0
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v6
       with:
-        node-version: 18.x
+        node-version: 24.x
         registry-url: https://registry.npmjs.org
+        cache: 'npm'
     - name: Install packages
       run: npm ci
       env:
@@ -33,7 +38,7 @@ jobs:
       run: npm run test:cov
     - name: Report coverage
       if: always()
-      uses: slavcodev/coverage-monitor-action@v1
+      uses: slavcodev/coverage-monitor-action@398c4cbbb710e549a8407fdef96ae8b9454d0463
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         coverage_path: coverage/clover.xml
@@ -45,7 +50,7 @@ jobs:
       run: npm run lint:report
     - name: Annotate Code Linting Results
       if: always()
-      uses: ataylorme/eslint-annotate-action@1.2.0
+      uses: ataylorme/eslint-annotate-action@d57a1193d4c59cbfbf3f86c271f42612f9dbd9e9
       with:
         repo-token: "${{ secrets.GITHUB_TOKEN }}"
         report-json: "eslint_report.json"
