@@ -43,9 +43,9 @@
         "node": ">=18.0.0"
     },
     "devDependencies": {
-        "@babel/core": "^7.25.2",
-        "@babel/preset-env": "^7.25.4",
-        "@oat-sa/browserslist-config-tao": "^1.0.1",
+        "@babel/core": "^7.29.7",
+        "@babel/preset-env": "^7.29.7",
+        "@oat-sa/browserslist-config-tao": "^1.0.2",
         "@oat-sa/eslint-config-tao": "^2.0.0",
         "@oat-sa/prettier-config": "^0.1.1",
         "@rollup/plugin-babel": "^6.0.4",
