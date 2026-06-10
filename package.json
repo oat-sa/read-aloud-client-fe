@@ -46,7 +46,7 @@
         "@babel/core": "^7.29.7",
         "@babel/preset-env": "^7.29.7",
         "@oat-sa/browserslist-config-tao": "^1.0.2",
-        "@oat-sa/eslint-config-tao": "^2.0.0",
+        "@oat-sa/eslint-config-tao": "^4.0.1",
         "@oat-sa/prettier-config": "^0.1.1",
         "@rollup/plugin-babel": "^6.0.4",
         "@rollup/plugin-commonjs": "^26.0.1",
