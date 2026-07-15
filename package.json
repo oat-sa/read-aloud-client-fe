@@ -34,7 +34,7 @@
     "author": {
         "name": "Open Assessment Technologies SA"
     },
-    "license": "GPL-2.0",
+    "license": "AGPL-3.0-only OR LicenseRef-TAO-Commercial-License",
     "bugs": {
         "url": "https://github.com/oat-sa/read-aloud-client-fe/issues"
     },
