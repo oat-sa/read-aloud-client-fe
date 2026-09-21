@@ -16,7 +16,7 @@
         "test:watch": "npm test -- --watch",
         "test:cov": "npm test -- --coverage",
         "serve:sandbox": "sirv sandbox --port 5400 --dev --http2 --key keys/localhost-key.pem --cert keys/localhost-cert.pem",
-        "dev:sandbox": "concurrently \"npm:serve:sandbox\" \"npm:build:dev\"",
+        "dev:sandbox": "concurrently --kill-others-on-fail \"npm:serve:sandbox\" \"npm:build:dev\"",
         "prepare": "npm run build"
     },
     "files": [
@@ -57,7 +57,7 @@
         "eslint": "^8.57.0",
         "jest": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
-        "concurrently": "^10.0.5",
+        "concurrently": "^9.1.2",
         "prettier": "^2.8.8",
         "rollup": "^2.79.1",
         "sirv": "^2.0.3",
