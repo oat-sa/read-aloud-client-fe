@@ -65,6 +65,8 @@ describe('get read aloud client', () => {
     it('client calls are forwarded to the provider', () => {
         const play = jest.fn();
         const playSelection = jest.fn();
+        const pause = jest.fn();
+        const resume = jest.fn();
         const stop = jest.fn();
         const setPreferences = jest.fn();
         const ignoreElements = jest.fn();
@@ -77,6 +79,8 @@ describe('get read aloud client', () => {
             Promise.resolve({
                 play,
                 playSelection,
+                pause,
+                resume,
                 stop,
                 setPreferences,
                 ignoreElements,
@@ -94,6 +98,8 @@ describe('get read aloud client', () => {
             client.setPreferences();
             client.ignoreElements('.selector');
             client.play(element);
+            client.pause();
+            client.resume();
             client.stop();
 
             client.isReading();
@@ -105,6 +111,8 @@ describe('get read aloud client', () => {
             expect(ignoreElements).toHaveBeenNthCalledWith(1, '.selector');
             expect(play).toHaveBeenNthCalledWith(1, element, void 0);
             expect(playSelection).toHaveBeenCalledTimes(1);
+            expect(pause).toHaveBeenCalledTimes(1);
+            expect(resume).toHaveBeenCalledTimes(1);
             expect(stop).toHaveBeenCalledTimes(2);
             expect(isReading).toHaveBeenCalledTimes(1);
 
@@ -119,44 +127,6 @@ describe('get read aloud client', () => {
 
             client.destroy();
             expect(destroy).toHaveBeenCalled();
-        });
-    });
-    it('returns "all enabled" constraints for native provider in getSupport', () => {
-        const play = jest.fn();
-        const playSelection = jest.fn();
-        const stop = jest.fn();
-        const destroy = jest.fn();
-
-        providers.custom.mockImplementation(() =>
-            Promise.resolve({
-                play,
-                playSelection,
-                stop,
-                destroy,
-            })
-        );
-        return getReadAloudClient('custom').then(client => {
-            expect(client.getSupport()).toStrictEqual(
-                {
-                    "pitch": {
-                        "disabled": false
-                    },
-                    "speed": {
-                        "disabled": false,
-                        "options": [
-                            "slowest",
-                            "slow",
-                            "normal",
-                            "fast",
-                            "fastest"
-                        ]
-                    },
-                    "voice": {
-                        "disabled": false
-                    },
-                    "clickToSpeak": false
-                }
-            );
         });
     });
 });

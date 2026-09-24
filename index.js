@@ -184,6 +184,9 @@ export default function getReadAloudClient(providerId, config = {}) {
              * @property {string[]} speed.options - Enabled speed options - values from the 'speeds' preferences.
              * @property {Object} pitch - Pitch configuration.
              * @property {boolean} pitch.disabled
+             * @property {boolean} playSelection - allowed or not (mutually exclusive)
+             * @property {boolean} clickToSpeak - allowed or not (mutually exclusive)
+             * @property {boolean} pause - allowed or not (stop is always allowed)
              */
 
             /**
@@ -201,16 +204,12 @@ export default function getReadAloudClient(providerId, config = {}) {
                         voice: { disabled: false },
                         speed: {
                             disabled: false,
-                            options: [
-                                speeds.slowest,
-                                speeds.slow,
-                                speeds.normal,
-                                speeds.fast,
-                                speeds.fastest
-                            ],
+                            options: [speeds.slowest, speeds.slow, speeds.normal, speeds.fast, speeds.fastest]
                         },
-                        pitch:  { disabled: false },
+                        pitch: { disabled: false },
+                        playSelection: false,
                         clickToSpeak: false,
+                        pause: false
                     };
                 }
             },
