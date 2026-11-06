@@ -114,3 +114,5 @@ sandbox/bundle.js
 sandbox/bundle.js.map
 
 keys/*.pem
+
+recordings/
